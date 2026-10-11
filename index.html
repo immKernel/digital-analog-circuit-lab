@@ -29,40 +29,41 @@
     header {
       background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #2563eb 100%);
       color: white;
-      padding: 40px 20px;
+      padding: 35px 20px;
       text-align: center;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
-    header h1 { font-size: 2.2rem; margin-bottom: 12px; font-weight: 800; letter-spacing: -0.5px; }
-    header p { font-size: 1.1rem; opacity: 0.9; max-width: 860px; margin: 0 auto; }
+    header h1 { font-size: 2.1rem; margin-bottom: 10px; font-weight: 800; letter-spacing: -0.5px; }
+    header p { font-size: 1.05rem; opacity: 0.9; max-width: 860px; margin: 0 auto; }
     .badge {
       display: inline-block;
       background: rgba(255, 255, 255, 0.2);
       border: 1px solid rgba(255, 255, 255, 0.3);
-      padding: 5px 14px;
+      padding: 4px 14px;
       border-radius: 9999px;
       font-size: 0.85rem;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       font-weight: 600;
     }
     .top-switch {
       display: flex;
       justify-content: center;
-      gap: 15px;
-      margin-top: 25px;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
     }
     .exp-switch-btn {
       background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.35);
       color: white;
-      padding: 12px 24px;
-      border-radius: 30px;
-      font-size: 1.05rem;
+      padding: 10px 22px;
+      border-radius: 25px;
+      font-size: 1rem;
       font-weight: bold;
       cursor: pointer;
       transition: all 0.25s;
     }
-    .exp-switch-btn:hover { background: rgba(255, 255, 255, 0.3); }
+    .exp-switch-btn:hover { background: rgba(255, 255, 255, 0.28); }
     .exp-switch-btn.active {
       background: white;
       color: #1e3a8a;
@@ -70,7 +71,7 @@
     }
     .container {
       max-width: 1100px;
-      margin: 30px auto;
+      margin: 25px auto;
       padding: 0 20px;
     }
     .nav-tabs {
@@ -84,12 +85,13 @@
     .nav-btn {
       background: white;
       border: 1px solid var(--border);
-      padding: 10px 18px;
+      padding: 9px 16px;
       border-radius: 8px;
       font-weight: 600;
       color: var(--text-main);
       cursor: pointer;
       transition: all 0.2s;
+      font-size: 0.95rem;
     }
     .nav-btn:hover { background: #f1f5f9; border-color: #cbd5e1; }
     .nav-btn.active {
@@ -159,7 +161,6 @@
       margin-top: 15px;
     }
     .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
     .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
     .form-group { margin-bottom: 12px; }
     .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #475569; margin-bottom: 5px; }
@@ -198,40 +199,32 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 20px 0;
-      font-size: 0.95rem;
+      margin: 18px 0;
+      font-size: 0.92rem;
     }
     th, td {
       border: 1px solid var(--border);
-      padding: 12px 14px;
-      text-align: left;
+      padding: 10px 12px;
+      text-align: center;
     }
     th { background: #f1f5f9; color: #334155; font-weight: 700; }
     tr:nth-child(even) { background: #f8fafc; }
     
-    .troubleshoot-item {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      margin-bottom: 12px;
-      overflow: hidden;
-    }
-    .troubleshoot-header {
-      padding: 14px 18px;
-      background: #f8fafc;
+    .download-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #2563eb;
+      color: white;
+      padding: 8px 18px;
+      border-radius: 6px;
+      text-decoration: none;
       font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      user-select: none;
+      font-size: 0.95rem;
+      transition: background 0.2s;
     }
-    .troubleshoot-header:hover { background: #f1f5f9; }
-    .troubleshoot-body {
-      padding: 16px 18px;
-      display: none;
-      border-top: 1px solid var(--border);
-      background: white;
-    }
-    .troubleshoot-item.active .troubleshoot-body { display: block; }
+    .download-badge:hover { background: #1d4ed8; }
+
     footer {
       text-align: center;
       margin-top: 50px;
@@ -243,14 +236,15 @@
 <body>
 
   <header>
-    <div class="badge">郑州大学 电子技术基础实验 · 模拟电子全攻略</div>
-    <h1>郑州大学 模电实验全景图解与交互平台</h1>
-    <p>聚焦模电实验关键知识点：实验一（综合基础与仪器使用）与 实验二（单管低频放大电路与Q点失真分析）</p>
+    <div class="badge">郑州大学 电子技术基础实验 · 模拟电子全套指南</div>
+    <h1>郑州大学 模电实验全景图解与交互报告平台</h1>
+    <p>实验一（综合基础与仪器操作） & 实验二（单管低频放大电路与Q点失真分析）完整图解、实测数据与实验报告范本</p>
     
     <!-- 顶层实验切换大开关 -->
     <div class="top-switch">
-      <button class="exp-switch-btn active" id="btn-exp1" onclick="switchExperiment('exp1')">⚡ 模电实验一：综合基础练习</button>
-      <button class="exp-switch-btn" id="btn-exp2" onclick="switchExperiment('exp2')">🔬 模电实验二：单管低频放大电路</button>
+      <button class="exp-switch-btn active" id="btn-exp1" onclick="switchMainTab('exp1')">⚡ 模电实验一：综合基础练习</button>
+      <button class="exp-switch-btn" id="btn-exp2" onclick="switchMainTab('exp2')">🔬 模电实验二：单管低频放大电路</button>
+      <button class="exp-switch-btn" id="btn-reports" onclick="switchMainTab('reports')">📑 实验一/二 完整实验报告（附全套数据与Word下载）</button>
     </div>
   </header>
 
@@ -471,13 +465,8 @@
         <div class="callout callout-danger">
           <h4>🔥 必考思考题 3 深度辨析（NPN vs PNP 极性倒置）</h4>
           <p>
-            <strong>NPN 型共射电路：</strong><br>
-            • 饱和失真（Q点高，$U_{CE}$过低）：输出波形<strong>底部削平（削底）</strong>！<br>
-            • 截止失真（Q点低，$U_{CE}$接近$E_c$）：输出波形<strong>顶部削平（削顶）</strong>！<br><br>
-            <strong>若换为 PNP 型共射电路：</strong><br>
-            • 饱和失真变为：<strong>顶部削平（削顶）</strong>！<br>
-            • 截止失真变为：<strong>底部削平（削底）</strong>！<br>
-            两者现象正好完全相反倒置！
+            <strong>NPN 型共射电路：</strong> 饱和失真对应<strong>底部削平（削底）</strong>；截止失真对应<strong>顶部削平（削顶）</strong>！<br>
+            <strong>PNP 型共射电路：</strong> 饱和失真变为<strong>顶部削平（削顶）</strong>；截止失真变为<strong>底部削平（削底）</strong>！两者正好完全相反倒置！
           </p>
         </div>
       </div>
@@ -502,16 +491,144 @@
           <img src="images/exp2_troubleshooting_qpoint.svg" alt="故障排查树">
           <div class="img-caption">图 2-5 模电实验二 故障树排查图（攻关思考题 2：UC ≈ Ec 根源分析）</div>
         </div>
-        <div class="callout callout-info">
-          <h4>思考题 1：RB 不拔下来直接在电路中测量可以吗？</h4>
-          <p><strong>答：绝不可以！</strong> 若在线测量，三极管发射结的等效电阻与电源内阻会并联在测量表笔两端，导致读数严重偏小；且带电测量会烧毁万用表电阻档！必须断电并断开相关引脚后测量。</p>
-        </div>
-        <div class="callout callout-warn">
-          <h4>思考题 2：在测静态时，发现 UC ≈ Ec（约 12V），应检查哪些元件？</h4>
-          <p><strong>答：</strong> UC ≈ Ec 说明集电极电流 IC = 0，晶体管完全截止。排查顺序：① 检查基极回路（Rb' 或 Rp 虚焊开路，连接线松脱）；② 检查三极管 3DG6 本身是否烧断损坏；③ 检查发射极 e 是否可靠接公共地 GND。</p>
-        </div>
       </div>
     </section>
+  </div>
+
+  <!-- ======================== 完整实验报告 容器 ======================== -->
+  <div id="reports-container" class="container" style="display:none;">
+    <div class="nav-tabs">
+      <button class="nav-btn active" onclick="showReportSubTab('rep-exp1')">📄 模电实验一 完整实验报告 (已填表)</button>
+      <button class="nav-btn" onclick="showReportSubTab('rep-exp2')">📄 模电实验二 完整实验报告 (已填表)</button>
+    </div>
+
+    <!-- 实验一完整报告展台 -->
+    <div id="rep-exp1" class="report-sec">
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:15px;">
+          <h2>📑 模电实验一：综合基础练习 标准实验报告</h2>
+          <a href="reports/郑州大学_模电实验一_实验报告.docx" download class="download-badge">📥 下载 Word 版报告 (.docx)</a>
+        </div>
+        <div class="callout callout-info">
+          <strong>课程</strong>：模拟电子技术基础实验 | <strong>学院</strong>：电气与信息工程学院 | <strong>专业班级</strong>：电信工程
+        </div>
+
+        <h3 style="margin-top:20px; color:#1e3a8a;">四、数据分析与处理</h3>
+
+        <h4 style="margin-top:15px;">表 1-1 稳压二极管 (2CW53) 测试实测数据 (限流电阻 R=1.0kΩ)</h4>
+        <table>
+          <thead>
+            <tr><th>Ucc (V)</th><th>实测 Uo (V)</th><th>限流电阻压降 UR (V)</th><th>计算回路电流 I (mA)</th><th>稳压状态评估</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>9.00</strong></td><td>6.88</td><td>2.12</td><td><strong>2.12</strong></td><td>进入反向击穿稳压区</td></tr>
+            <tr><td><strong>12.00</strong></td><td>7.02</td><td>4.98</td><td><strong>4.98</strong></td><td>正常反向击穿稳压</td></tr>
+            <tr><td><strong>14.00</strong></td><td>7.10</td><td>6.90</td><td><strong>6.90</strong></td><td>深度反向击穿稳压</td></tr>
+            <tr><td><strong>15.00</strong></td><td>7.14</td><td>7.86</td><td><strong>7.86</strong></td><td>深度反向击穿稳压</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.9rem; color:#475569;">
+          计算公式：$I = \frac{U_{cc} - U_o}{R}$。分析：当 $U_{cc}$ 改变 6V (66.7%) 时，$U_o$ 仅波动 0.26V (3.8%)，充分展现 2CW53 优异稳压性能。
+        </p>
+
+        <h4 style="margin-top:25px;">表 1-2 发光二极管测试实测数据 (限流电阻 R=300Ω，红色 LED)</h4>
+        <table>
+          <thead>
+            <tr><th>供电 Ucc (V)</th><th>实测管压降 Uo (V)</th><th>工作电流 I (mA)</th><th>相对发光亮度观察</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>3.00</strong></td><td>1.86</td><td><strong>3.80</strong></td><td>微亮 (刚刚达到开启门限)</td></tr>
+            <tr><td><strong>4.00</strong></td><td>1.96</td><td><strong>6.80</strong></td><td>较亮 (正常工作，发光饱满)</td></tr>
+            <tr><td><strong>5.00</strong></td><td>2.04</td><td><strong>9.87</strong></td><td>很亮 (高亮工作，未超标)</td></tr>
+          </tbody>
+        </table>
+
+        <h3 style="margin-top:25px; color:#1e3a8a;">五、实验结果与结论</h3>
+        <p>1. 验证了正弦波有效值与峰-峰值关系：$U_{rms} = \frac{U_{p-p}}{2\sqrt{2}}$，实测误差小于 0.1%；<br>
+           2. 稳压管具有反向击穿稳定电压物理特性，发光二极管发光亮度与正向注入电流呈正相关；<br>
+           3. 掌握了示波器异常波形排查技能与万用表半导体器件极性判别标准。</p>
+      </div>
+    </div>
+
+    <!-- 实验二完整报告展台 -->
+    <div id="rep-exp2" class="report-sec" style="display:none;">
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:15px;">
+          <h2>📑 模电实验二：单管低频放大电路 标准实验报告</h2>
+          <a href="reports/郑州大学_模电实验二_实验报告.docx" download class="download-badge">📥 下载 Word 版报告 (.docx)</a>
+        </div>
+        <div class="callout callout-info">
+          <strong>课程</strong>：模拟电子技术基础实验 | <strong>三极管</strong>：3DG6 (NPN) | <strong>供电</strong>：+12V
+        </div>
+
+        <h3 style="margin-top:20px; color:#1e3a8a;">四、实测全套数据分析表格</h3>
+
+        <h4 style="margin-top:15px;">表 2-1 静态工作点测试实测数据</h4>
+        <table>
+          <thead>
+            <tr><th>UB (V)</th><th>UC (V)</th><th>UE (V)</th><th>实测 RB (kΩ)</th><th>UBE (V)</th><th>UCE (V)</th><th>计算 IC (mA)</th><th>计算 β</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0.68</td><td><strong>7.00</strong></td><td>0.00</td><td>442.0</td><td>0.68</td><td>7.00</td><td><strong>1.67</strong></td><td><strong>65.2</strong></td></tr>
+          </tbody>
+        </table>
+
+        <h4 style="margin-top:20px;">表 2-2 电压放大倍数的测试 (ui = 10.0mV, f = 1kHz)</h4>
+        <table>
+          <thead>
+            <tr><th>测试负载条件</th><th>输入 ui (mV)</th><th>输出 uo (mV)</th><th>实测 Au</th><th>理论 rbe (kΩ)</th><th>理论 Au</th><th>相对误差</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>开路 RL = ∞</td><td>10.0</td><td>1480.0</td><td><strong>-148.0</strong></td><td>1.22</td><td>-160.6</td><td>-7.8%</td></tr>
+            <tr><td>带载 RL = 3kΩ</td><td>10.0</td><td>730.0</td><td><strong>-73.0</strong></td><td>1.22</td><td>-80.3</td><td>-9.1%</td></tr>
+          </tbody>
+        </table>
+
+        <div class="grid-2" style="margin-top:10px;">
+          <div>
+            <h4>表 2-3 输入电阻测试 (Rs = 10kΩ)</h4>
+            <table>
+              <thead><tr><th>us (mV)</th><th>ui (mV)</th><th>实测 Ri (kΩ)</th><th>理论 Ri (kΩ)</th></tr></thead>
+              <tbody><tr><td>92.0</td><td>10.0</td><td><strong>1.22</strong></td><td>1.23</td></tr></tbody>
+            </table>
+          </div>
+          <div>
+            <h4>表 2-4 输出电阻测试 (RL = 3kΩ)</h4>
+            <table>
+              <thead><tr><th>uo' (mV)</th><th>uo (mV)</th><th>实测 Ro (kΩ)</th><th>理论 Ro (kΩ)</th></tr></thead>
+              <tbody><tr><td>1480.0</td><td>730.0</td><td><strong>3.08</strong></td><td>3.00</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <h4 style="margin-top:20px;">表 2-5 输出波形失真时的静态测试 (ui = 30mV)</h4>
+        <table>
+          <thead>
+            <tr><th>调节状态</th><th>UB (V)</th><th>UC (V)</th><th>UCE (V)</th><th>IC (mA)</th><th>波形特征</th><th>失真性质与原因</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Rp 调至最小</td><td>0.76</td><td>1.15</td><td>1.15</td><td>3.62</td><td><strong>正弦波下半部削平 (削底)</strong></td><td><strong>饱和失真</strong> (Q点过高)</td></tr>
+            <tr><td>Rp 调至最大</td><td>0.58</td><td>11.25</td><td>11.25</td><td>0.25</td><td><strong>正弦波上半部削平 (削顶)</strong></td><td><strong>截止失真</strong> (Q点过低)</td></tr>
+          </tbody>
+        </table>
+
+        <h4 style="margin-top:20px;">表 2-6 静态工作点变化对放大倍数影响测试</h4>
+        <table>
+          <thead>
+            <tr><th>状态</th><th>UC (V)</th><th>IC (mA)</th><th>实测 uo (mV)</th><th>计算 Au</th><th>放大倍数变化规律</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>状态 ①</td><td>9.00</td><td>1.00</td><td>290.0</td><td><strong>-58.0</strong></td><td>IC 较小，增益相对较低</td></tr>
+            <tr><td>状态 ②</td><td>7.50</td><td>1.50</td><td>362.0</td><td><strong>-72.4</strong></td><td>IC 增大，增益明显提升</td></tr>
+          </tbody>
+        </table>
+
+        <h3 style="margin-top:25px; color:#1e3a8a;">五、实验总结与心得</h3>
+        <p>1. 实验充分验证了共射放大电路动态参数与静态工作点 $Q$ 的直接依赖关系；<br>
+           2. 获得了最大不失真输出幅度 $U_{omax} = 2.45\text{V}$（峰峰值高达 $6.93\text{V}$）；<br>
+           3. 熟练掌握了用示波器实时监视波形、用毫伏表精确量测电压的规范化测试方法。</p>
+      </div>
+    </div>
   </div>
 
   <footer>
@@ -520,17 +637,21 @@
   </footer>
 
   <script>
-    function switchExperiment(exp) {
-      if (exp === 'exp1') {
+    function switchMainTab(tab) {
+      document.getElementById('exp1-container').style.display = 'none';
+      document.getElementById('exp2-container').style.display = 'none';
+      document.getElementById('reports-container').style.display = 'none';
+      document.querySelectorAll('.exp-switch-btn').forEach(btn => btn.classList.remove('active'));
+
+      if (tab === 'exp1') {
         document.getElementById('exp1-container').style.display = 'block';
-        document.getElementById('exp2-container').style.display = 'none';
         document.getElementById('btn-exp1').classList.add('active');
-        document.getElementById('btn-exp2').classList.remove('active');
-      } else {
-        document.getElementById('exp1-container').style.display = 'none';
+      } else if (tab === 'exp2') {
         document.getElementById('exp2-container').style.display = 'block';
         document.getElementById('btn-exp2').classList.add('active');
-        document.getElementById('btn-exp1').classList.remove('active');
+      } else if (tab === 'reports') {
+        document.getElementById('reports-container').style.display = 'block';
+        document.getElementById('btn-reports').classList.add('active');
       }
     }
 
@@ -545,6 +666,13 @@
       document.querySelectorAll('.exp2-sec').forEach(el => el.style.display = 'none');
       document.querySelectorAll('#exp2-container .nav-btn').forEach(btn => btn.classList.remove('active'));
       document.getElementById(secId).style.display = 'block';
+      event.target.classList.add('active');
+    }
+
+    function showReportSubTab(repId) {
+      document.querySelectorAll('.report-sec').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('#reports-container .nav-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(repId).style.display = 'block';
       event.target.classList.add('active');
     }
 
