@@ -5,3 +5,4 @@ __pycache__/
 .idea/
 *.tmp
 pdf_pages/
+~$*.docx

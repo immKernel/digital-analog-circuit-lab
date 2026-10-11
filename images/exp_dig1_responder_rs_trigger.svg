@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 540" width="100%" height="100%">
+  <defs>
+    <style>
+      .title { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 20px; font-weight: bold; fill: #0f172a; }
+      .sub { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 13px; fill: #64748b; }
+      .h2 { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 15px; font-weight: bold; fill: #1e3a8a; }
+      .txt { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 11px; fill: #334155; }
+    </style>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <rect width="980" height="540" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2" />
+
+  <text x="490" y="38" text-anchor="middle" class="title">图 1-4 四人智力抢答器逻辑电路 (图1-8) 与基本 RS 触发器 (图1-9)</text>
+  <text x="490" y="60" text-anchor="middle" class="sub">74LS20 (4输入与非) + 74LS04 (反相器) 自锁鉴优电路 · RS 触发器置位/复位逻辑</text>
+
+  <!-- 左侧：四人抢答器电路原理 (图 1-8) -->
+  <g transform="translate(40, 85)" filter="url(#shadow)">
+    <rect width="460" height="420" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="2" />
+    <text x="20" y="30" class="h2">1. 四人抢答逻辑电路原理（思考题 6 详解）</text>
+
+    <!-- 抢答按键 K1~K4 与自锁逻辑 -->
+    <g transform="translate(20, 50)">
+      <rect width="420" height="230" rx="8" fill="#f8fafc" stroke="#e2e8f0" />
+      <text x="15" y="25" font-size="12" font-weight="bold" fill="#0f172a">工作原理机制：</text>
+      <text x="15" y="48" class="txt">1. <tspan font-weight="bold">准备状态：</tspan>主持人未宣布开始时，抢答开关断开，四路输入均为 1，指示灯全灭。</text>
+      <text x="15" y="75" class="txt">2. <tspan font-weight="bold">率先抢答：</tspan>某选手（如 1 号）率先按下开关 K1 ➔ 该路产生低电平 0 ➔ 驱动对应指示灯 L1 点亮！</text>
+      <text x="15" y="112" class="txt">3. <tspan font-weight="bold">全局互锁自锁：</tspan>1 号抢答信号通过 4 输入与非门 (74LS20) 产生封锁反馈信号，瞬间将另外 3 路与非门全部封闭！</text>
+      <text x="15" y="150" class="txt">4. <tspan font-weight="bold">鉴优排他性：</tspan>其余选手随后再按下 K2、K3、K4 均完全无效，指示灯不亮，实现严格“第一优先”！</text>
+      
+      <!-- 逻辑表达式 -->
+      <rect x="15" y="175" width="390" height="42" rx="6" fill="#eff6ff" stroke="#bfdbfe" />
+      <text x="25" y="200" font-family="Consolas" font-weight="bold" font-size="12" fill="#1e40af">Li = !(Ki · !LOCK), 其中 LOCK = !(K1·K2·K3·K4)</text>
+    </g>
+
+    <!-- 底部实测特点 -->
+    <rect x="20" y="295" width="420" height="100" rx="8" fill="#ecfdf5" stroke="#a7f3d0" />
+    <text x="30" y="320" font-size="12" font-weight="bold" fill="#065f46">🏆 抢答器实验实测结论：</text>
+    <text x="30" y="342" font-size="11" fill="#047857">● 任何一人抢按，对应指示灯瞬间点亮，其余3人同时按键毫无反应；</text>
+    <text x="30" y="362" font-size="11" fill="#047857">● 松开复位开关后，系统恢复初始待命状态，准确率 100%。</text>
+  </g>
+
+  <!-- 右侧：基本 RS 触发器 (图 1-9) -->
+  <g transform="translate(530, 85)" filter="url(#shadow)">
+    <rect width="410" height="420" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="2" />
+    <text x="20" y="30" class="h2">2. 与非门构成的基本 RS 触发器 (图 1-9 a)</text>
+
+    <!-- RS 触发器电路 -->
+    <g transform="translate(30, 50)">
+      <!-- 门 1 (上) -->
+      <line x1="20" y1="35" x2="60" y2="35" stroke="#0f172a" stroke-width="2" /><text x="10" y="39" class="pin">!S</text>
+      <path d="M 60 20 L 80 20 A 20 20 0 0 1 80 60 L 60 60 Z" fill="#eff6ff" stroke="#2563eb" stroke-width="2" />
+      <circle cx="104" cy="40" r="4" fill="#ffffff" stroke="#2563eb" stroke-width="2" />
+      <text x="71" y="44" font-size="13" font-weight="bold" fill="#2563eb">&amp;</text>
+      <line x1="108" y1="40" x2="160" y2="40" stroke="#0f172a" stroke-width="2" /><circle cx="160" cy="40" r="4" fill="#10b981" /><text x="170" y="44" class="pin" fill="#10b981">Q</text>
+
+      <!-- 门 2 (下) -->
+      <line x1="20" y1="125" x2="60" y2="125" stroke="#0f172a" stroke-width="2" /><text x="10" y="129" class="pin">!R</text>
+      <path d="M 60 105 L 80 105 A 20 20 0 0 1 80 145 L 60 145 Z" fill="#eff6ff" stroke="#2563eb" stroke-width="2" />
+      <circle cx="104" cy="125" r="4" fill="#ffffff" stroke="#2563eb" stroke-width="2" />
+      <text x="71" y="129" font-size="13" font-weight="bold" fill="#2563eb">&amp;</text>
+      <line x1="108" y1="125" x2="160" y2="125" stroke="#0f172a" stroke-width="2" /><circle cx="160" cy="125" r="4" fill="#10b981" /><text x="170" y="129" class="pin" fill="#10b981">!Q</text>
+
+      <!-- 交叉互锁反馈线 -->
+      <line x1="130" y1="40" x2="130" y2="70" stroke="#dc2626" stroke-width="1.8" />
+      <line x1="130" y1="70" x2="45" y2="110" stroke="#dc2626" stroke-width="1.8" />
+      <line x1="45" y1="110" x2="60" y2="115" stroke="#dc2626" stroke-width="1.8" />
+
+      <line x1="130" y1="125" x2="130" y2="95" stroke="#2563eb" stroke-width="1.8" />
+      <line x1="130" y1="95" x2="45" y2="55" stroke="#2563eb" stroke-width="1.8" />
+      <line x1="45" y1="55" x2="60" y2="50" stroke="#2563eb" stroke-width="1.8" />
+    </g>
+
+    <!-- 真值表 -->
+    <g transform="translate(20, 225)">
+      <rect width="370" height="170" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
+      <text x="185" y="24" text-anchor="middle" font-weight="bold" font-size="12" fill="#0f172a">基本 RS 触发器功能真值表</text>
+      <text x="20" y="50" font-family="Consolas" font-size="11">!S  !R | Q  !Q | 功能说明</text>
+      <text x="20" y="75" font-family="Consolas" font-size="11"> 0   1 | 1   0 | 置位 (置 1)</text>
+      <text x="20" y="100" font-family="Consolas" font-size="11"> 1   0 | 0   1 | 复位 (清 0)</text>
+      <text x="20" y="125" font-family="Consolas" font-size="11"> 1   1 | Q0 !Q0| 保持原有状态 (记忆存储)</text>
+      <text x="20" y="150" font-family="Consolas" font-size="11" fill="#dc2626"> 0   0 | 1   1 | 非法状态 (禁止状态)</text>
+    </g>
+  </g>
+</svg>

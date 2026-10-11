@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 540" width="100%" height="100%">
+  <defs>
+    <style>
+      .title { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 20px; font-weight: bold; fill: #0f172a; }
+      .sub { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 13px; fill: #64748b; }
+      .h2 { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 15px; font-weight: bold; fill: #1e3a8a; }
+      .math { font-family: 'Consolas', monospace; font-size: 13px; font-weight: bold; }
+      .desc { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 11px; fill: #475569; }
+    </style>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <rect width="980" height="540" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2" />
+
+  <text x="490" y="38" text-anchor="middle" class="title">图 1-3 反相器多谐振荡器 (图1-6) 与 74LS125 三态门总线应用 (图1-7)</text>
+  <text x="490" y="60" text-anchor="middle" class="sub">周期性时钟脉冲产生 · 三态控制 · 数据双向/单向总线传输</text>
+
+  <!-- 左侧：反相器多谐振荡器 (图 1-6) -->
+  <g transform="translate(40, 85)" filter="url(#shadow)">
+    <rect width="430" height="420" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="2" />
+    <text x="20" y="30" class="h2">1. 反相器组成的多谐振荡器 (图 1-6)</text>
+    
+    <!-- 电路绘制 -->
+    <g transform="translate(30, 60)">
+      <!-- 反相器 G1 -->
+      <polygon points="40,30 40,70 75,50" fill="#eff6ff" stroke="#2563eb" stroke-width="2" />
+      <circle cx="80" cy="50" r="4" fill="#ffffff" stroke="#2563eb" stroke-width="2" />
+      <text x="48" y="54" font-size="11" font-weight="bold" fill="#2563eb">G1</text>
+      
+      <!-- 连线到 G2 -->
+      <line x1="84" y1="50" x2="120" y2="50" stroke="#0f172a" stroke-width="2" />
+      <polygon points="120,30 120,70 155,50" fill="#eff6ff" stroke="#2563eb" stroke-width="2" />
+      <circle cx="160" cy="50" r="4" fill="#ffffff" stroke="#2563eb" stroke-width="2" />
+      <text x="128" y="54" font-size="11" font-weight="bold" fill="#2563eb">G2</text>
+
+      <!-- 输出 uo -->
+      <line x1="164" y1="50" x2="220" y2="50" stroke="#0f172a" stroke-width="2" />
+      <circle cx="220" cy="50" r="4" fill="#10b981" />
+      <text x="230" y="55" font-size="13" font-weight="bold" fill="#10b981">uo</text>
+
+      <!-- 反馈回路：电容 C 跨接在 G2 输出与输入之间 -->
+      <line x1="180" y1="50" x2="180" y2="120" stroke="#0f172a" stroke-width="2" />
+      <line x1="180" y1="120" x2="135" y2="120" stroke="#0f172a" stroke-width="2" />
+      <!-- 电容 C = 0.01uF -->
+      <line x1="135" y1="110" x2="135" y2="130" stroke="#0f172a" stroke-width="2.5" />
+      <line x1="127" y1="110" x2="127" y2="130" stroke="#0f172a" stroke-width="2.5" />
+      <text x="131" y="145" text-anchor="middle" font-size="10" font-weight="bold">C=0.01μF</text>
+      <line x1="127" y1="120" x2="80" y2="120" stroke="#0f172a" stroke-width="2" />
+      
+      <!-- 电阻 R = 1k 与 Rs = 10k -->
+      <!-- 电阻 R -->
+      <rect x="50" y="112" width="30" height="16" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.8" />
+      <text x="65" y="124" text-anchor="middle" font-size="9" font-weight="bold">R=1k</text>
+      <line x1="50" y1="120" x2="20" y2="120" stroke="#0f172a" stroke-width="2" />
+      <line x1="20" y1="120" x2="20" y2="50" stroke="#0f172a" stroke-width="2" />
+      <!-- 电阻 Rs -->
+      <rect x="5" y="65" width="16" height="30" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.8" />
+      <text x="32" y="82" font-size="9" font-weight="bold">Rs=10k</text>
+      <line x1="20" y1="50" x2="40" y2="50" stroke="#0f172a" stroke-width="2" />
+      <!-- 接地中间节点 -->
+      <line x1="80" y1="120" x2="102" y2="50" stroke="#0f172a" stroke-width="2" />
+    </g>
+
+    <!-- 频率公式与测试数据看板 -->
+    <g transform="translate(20, 220)">
+      <rect width="390" height="175" rx="8" fill="#f8fafc" stroke="#cbd5e1" />
+      <text x="15" y="25" font-size="12" font-weight="bold" fill="#0f172a">📐 频率理论计算与示波器实测对比：</text>
+      <text x="15" y="50" class="math" fill="#b91c1c">理论公式：f = 1 / T = 1 / (2.2 · R · C)</text>
+      <text x="15" y="72" class="desc">代入 R = 1.0 kΩ, C = 0.01 μF：</text>
+      <text x="15" y="92" class="math" fill="#1e40af">f = 1 / (2.2 × 1000 × 10^-8) ≈ 45.45 kHz</text>
+      
+      <rect x="15" y="105" width="360" height="55" rx="6" fill="#ecfdf5" stroke="#a7f3d0" />
+      <text x="25" y="125" font-size="11" font-weight="bold" fill="#065f46">📊 示波器实测波形参数：</text>
+      <text x="25" y="145" font-size="10" fill="#047857">实测周期 T = 22.4 µs ➔ 实测频率 f = 44.64 kHz (误差仅 -1.8%)，输出标准矩形波。</text>
+    </g>
+  </g>
+
+  <!-- 右侧：三态门应用 (图 1-7) -->
+  <g transform="translate(500, 85)" filter="url(#shadow)">
+    <rect width="440" height="420" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="2" />
+    <text x="20" y="30" class="h2">2. 74LS125 三态门总线应用 (图 1-7)</text>
+
+    <!-- (a) 多路开关 -->
+    <g transform="translate(20, 48)">
+      <rect width="400" height="105" rx="8" fill="#f8fafc" stroke="#e2e8f0" />
+      <text x="15" y="22" font-size="12" font-weight="bold" fill="#0f172a">图 1-7(a) 多路选择开关（表 1-5）</text>
+      <text x="15" y="45" class="desc">由同一控制信号 /EN 反相分别控制两片三态门：</text>
+      <text x="15" y="65" font-family="Consolas" font-size="11" fill="#1e40af">当 /EN = 0 时，门1选通 ➔ 输出 L = A1；</text>
+      <text x="15" y="85" font-family="Consolas" font-size="11" fill="#1e40af">当 /EN = 1 时，门2选通 ➔ 输出 L = A2。</text>
+    </g>
+
+    <!-- (b) 数据双向传输 -->
+    <g transform="translate(20, 165)">
+      <rect width="400" height="105" rx="8" fill="#f8fafc" stroke="#e2e8f0" />
+      <text x="15" y="22" font-size="12" font-weight="bold" fill="#0f172a">图 1-7(b) 数据双向传输（表 1-6）</text>
+      <text x="15" y="45" class="desc">两个三态门反向并联跨接在 A1 与 A2 之间：</text>
+      <text x="15" y="65" font-family="Consolas" font-size="11" fill="#047857">当 /EN = 0 时，正向门通 ➔ A1 ➔ A2 数据流动；</text>
+      <text x="15" y="85" font-family="Consolas" font-size="11" fill="#047857">当 /EN = 1 时，反向门通 ➔ A2 ➔ A1 反向传输。</text>
+    </g>
+
+    <!-- (c) 单向总线传输 -->
+    <g transform="translate(20, 282)">
+      <rect width="400" height="115" rx="8" fill="#f8fafc" stroke="#e2e8f0" />
+      <text x="15" y="22" font-size="12" font-weight="bold" fill="#0f172a">图 1-7(c) 单向分时复用总线传输（表 1-7）</text>
+      <text x="15" y="45" class="desc">多个信号源输出并联挂在单根数据总线 L 上：</text>
+      <text x="15" y="68" font-size="11" fill="#b91c1c">任何时刻只能允许一个三态门的使能端 /EN=0（有效）！</text>
+      <text x="15" y="88" font-size="11" fill="#334155">其余三态门必须置于高阻态（Hi-Z），防止总线冲突短路！</text>
+    </g>
+  </g>
+</svg>

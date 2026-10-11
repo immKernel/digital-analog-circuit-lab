@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>郑州大学模电实验全攻略与图解交互平台 | 实验一 & 实验二</title>
+  <title>郑州大学数模电实验全攻略与图解交互平台 | 数电一二 & 模电一二</title>
   <style>
     :root {
       --primary: #2563eb;
@@ -49,16 +49,16 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
       margin-top: 22px;
     }
     .exp-switch-btn {
       background: rgba(255, 255, 255, 0.15);
       border: 1px solid rgba(255, 255, 255, 0.35);
       color: white;
-      padding: 10px 22px;
+      padding: 9px 18px;
       border-radius: 25px;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: bold;
       cursor: pointer;
       transition: all 0.25s;
@@ -73,32 +73,6 @@
       max-width: 1100px;
       margin: 25px auto;
       padding: 0 20px;
-    }
-    .nav-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 25px;
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 12px;
-    }
-    .nav-btn {
-      background: white;
-      border: 1px solid var(--border);
-      padding: 9px 16px;
-      border-radius: 8px;
-      font-weight: 600;
-      color: var(--text-main);
-      cursor: pointer;
-      transition: all 0.2s;
-      font-size: 0.95rem;
-    }
-    .nav-btn:hover { background: #f1f5f9; border-color: #cbd5e1; }
-    .nav-btn.active {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
     }
     .card {
       background: var(--card-bg);
@@ -150,7 +124,6 @@
     .callout-warn { background: #fffbeb; border-color: #f59e0b; color: #92400e; }
     .callout-danger { background: #fef2f2; border-color: #ef4444; color: #991b1b; }
     .callout-success { background: #ecfdf5; border-color: #10b981; color: #065f46; }
-    .callout h4 { margin-bottom: 6px; font-size: 1.05rem; }
 
     /* Interactive Calculator */
     .calc-box {
@@ -161,6 +134,7 @@
       margin-top: 15px;
     }
     .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
     .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
     .form-group { margin-bottom: 12px; }
     .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #475569; margin-bottom: 5px; }
@@ -236,414 +210,226 @@
 <body>
 
   <header>
-    <div class="badge">郑州大学 电子技术基础实验 · 模拟电子全套指南</div>
-    <h1>郑州大学 模电实验全景图解与交互报告平台</h1>
-    <p>实验一（综合基础与仪器操作） & 实验二（单管低频放大电路与Q点失真分析）完整图解、实测数据与实验报告范本</p>
+    <div class="badge">郑州大学 电子技术基础实验 · 数字电路与模拟电路全套平台</div>
+    <h1>郑州大学 数电 & 模电实验全景图解交互平台</h1>
+    <p>数电实验一/二 & 模电实验一/二 · 完整矢量图解、在线逻辑与参数仿真、全套实测数据与实验报告 Word 下载</p>
     
-    <!-- 顶层实验切换大开关 -->
     <div class="top-switch">
-      <button class="exp-switch-btn active" id="btn-exp1" onclick="switchMainTab('exp1')">⚡ 模电实验一：综合基础练习</button>
+      <button class="exp-switch-btn active" id="btn-dig1" onclick="switchMainTab('dig1')">🔢 数电实验一：集成逻辑门电路</button>
+      <button class="exp-switch-btn" id="btn-dig2" onclick="switchMainTab('dig2')">➕ 数电实验二：异或门与全加器</button>
+      <button class="exp-switch-btn" id="btn-exp1" onclick="switchMainTab('exp1')">⚡ 模电实验一：综合基础练习</button>
       <button class="exp-switch-btn" id="btn-exp2" onclick="switchMainTab('exp2')">🔬 模电实验二：单管低频放大电路</button>
-      <button class="exp-switch-btn" id="btn-reports" onclick="switchMainTab('reports')">📑 实验一/二 完整实验报告（附全套数据与Word下载）</button>
+      <button class="exp-switch-btn" id="btn-reports" onclick="switchMainTab('reports')">📑 实验报告下载专区 (4份 Word)</button>
     </div>
   </header>
 
-  <!-- ======================== 模电实验一 容器 ======================== -->
-  <div id="exp1-container" class="container">
-    <div class="nav-tabs">
-      <button class="nav-btn active" onclick="showExp1Section('sec-overview')">📖 仪器连接拓扑与规范</button>
-      <button class="nav-btn" onclick="showExp1Section('sec-oscilloscope')">📊 示波器测量换算器</button>
-      <button class="nav-btn" onclick="showExp1Section('sec-troubleshooting')">⚡ 8种异常波形诊断</button>
-      <button class="nav-btn" onclick="showExp1Section('sec-components')">🔍 稳压管/LED/三极管测试</button>
-      <button class="nav-btn" onclick="showExp1Section('sec-qa')">💡 实验一重点思考题解答</button>
+  <!-- ======================== 数电实验一 容器 ======================== -->
+  <div id="dig1-container" class="container">
+    <div class="card">
+      <h2>🔢 数电实验一：集成逻辑门电路及其应用</h2>
+      <p>学习 74LS20、74LS00、74LS04、74LS125 的引脚结构，掌握与非门构建常用逻辑门，掌握反相器多谐振荡器与三态门总线传输。</p>
+      
+      <div class="img-wrap">
+        <img src="images/exp_dig1_gate_pinouts.svg" alt="芯片引脚图">
+        <div class="img-caption">图 1-1 74LS20, 74LS00, 74LS04, 74LS125 管脚排列图及内部逻辑结构</div>
+      </div>
+
+      <div class="img-wrap">
+        <img src="images/exp_dig1_gate_conversion.svg" alt="与非门构造其它门电路">
+        <div class="img-caption">图 1-2 利用与非门 (74LS00) 构成或门 (图1-3)、或非门 (图1-4) 及异或门 (图1-5)</div>
+      </div>
+
+      <div class="img-wrap">
+        <img src="images/exp_dig1_ring_oscillator_tristate.svg" alt="振荡器与三态门">
+        <div class="img-caption">图 1-3 反相器多谐振荡器 (图1-6) 与 74LS125 三态门总线复用 (图1-7)</div>
+      </div>
+
+      <div class="img-wrap">
+        <img src="images/exp_dig1_responder_rs_trigger.svg" alt="抢答器与RS触发器">
+        <div class="img-caption">图 1-4 四人智力抢答器电路 (图1-8) 与基本 RS 触发器 (图1-9)</div>
+      </div>
+
+      <!-- 在线逻辑门测试仿真器 -->
+      <div class="calc-box">
+        <h3 style="margin-bottom: 12px; color: #1e3a8a;">🧮 逻辑门实时逻辑真值表验证器</h3>
+        <div class="grid-3">
+          <div class="form-group">
+            <label>门电路类型选择:</label>
+            <select id="gateType" onchange="runLogicGate()">
+              <option value="nand">与非门 (74LS00): !(A·B)</option>
+              <option value="or">与非搭或门: A + B</option>
+              <option value="nor">与非搭或非门: !(A + B)</option>
+              <option value="xor">与非搭异或门: A ⊕ B</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>输入端 A:</label>
+            <select id="gateA" onchange="runLogicGate()">
+              <option value="0">0 (低电平 0V)</option>
+              <option value="1" selected>1 (高电平 5V)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>输入端 B:</label>
+            <select id="gateB" onchange="runLogicGate()">
+              <option value="0">0 (低电平 0V)</option>
+              <option value="1">1 (高电平 5V)</option>
+            </select>
+          </div>
+        </div>
+        <div class="calc-result" id="gateResult">
+          💡 <strong>输出端 Y = 1 (高电平 4.12V) | LED 状态：点亮</strong><br>
+          逻辑判定：与非门输入 A=1, B=0 满足有“0”出“1”规则。
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- 实验一：模块 1 -->
-    <section id="sec-overview" class="exp1-sec">
-      <div class="card">
-        <h2>🧭 实验一 综述与系统连接</h2>
-        <p>掌握低频信号发生器、双踪示波器、晶体管交流毫伏表、直流稳压电源的协同工作关系与全系统共地规范。</p>
-        <div class="img-wrap">
-          <img src="images/fig1_instrument_connections.svg" alt="实验常用仪器设备连接系统拓扑图">
-          <div class="img-caption">图 1-1 模拟电子实验常用仪器设备连接系统拓扑图</div>
-        </div>
-        <div class="callout callout-danger">
-          <h4>⚠️ 实验三大红线：</h4>
-          <ol>
-            <li><strong>全系统共地</strong>：所有仪器黑夹子探头必须连接公共 GND！</li>
-            <li><strong>毫伏表操作规范</strong>：专测交流，严禁测直流；开机与换档遵守“由大到小”！</li>
-            <li><strong>万用表防烧表</strong>：严禁在电阻档下测电压或带电量测！</li>
-          </ol>
-        </div>
+  <!-- ======================== 数电实验二 容器 ======================== -->
+  <div id="dig2-container" class="container" style="display:none;">
+    <div class="card">
+      <h2>➕ 数电实验二：异或门、全加器及其应用</h2>
+      <p>学习 74LS86 异或门与 74LS83 4 位全加器，掌握半减器、原/反码发生器、奇偶校验器、4位加法/减法器及 8421转余3码电路。</p>
+
+      <div class="img-wrap">
+        <img src="images/exp_dig2_xor_half_subtractor.svg" alt="异或门应用">
+        <div class="img-caption">图 2-1 异或门应用：半减器 (图2-3) · 原码/反码发生器 (图2-6) · 四位奇偶校验器 (图2-7)</div>
       </div>
-    </section>
 
-    <!-- 实验一：模块 2 -->
-    <section id="sec-oscilloscope" class="exp1-sec" style="display:none;">
-      <div class="card">
-        <h2>📊 示波器测量原理与实时换算器</h2>
-        <div class="img-wrap">
-          <img src="images/fig2_oscilloscope_panel.svg" alt="示波器坐标测量原理">
-          <div class="img-caption">图 1-2 示波器荧光屏坐标测量原理与核心控制旋钮分区</div>
-        </div>
-        <div class="calc-box">
-          <h3 style="margin-bottom: 12px;">🧮 示波器读数换算器</h3>
-          <div class="grid-2">
-            <div>
-              <div class="form-group">
-                <label>垂直高度格数 ΔY (div):</label>
-                <input type="number" id="divY" value="4.0" step="0.1">
-              </div>
-              <div class="form-group">
-                <label>垂直衰减档位 (Volts/div):</label>
-                <select id="vDiv">
-                  <option value="0.1">0.1 V/div</option><option value="0.5">0.5 V/div</option><option value="1.0" selected>1.0 V/div</option><option value="2.0">2.0 V/div</option><option value="5.0">5.0 V/div</option>
-                </select>
-              </div>
-            </div>
-            <div>
-              <div class="form-group">
-                <label>水平宽度格数 ΔX (div):</label>
-                <input type="number" id="divX" value="4.0" step="0.1">
-              </div>
-              <div class="form-group">
-                <label>扫描时基档位 (Time/div):</label>
-                <select id="tDiv">
-                  <option value="0.00025" selected>0.25 ms/div</option><option value="0.0005">0.5 ms/div</option><option value="0.001">1.0 ms/div</option><option value="0.002">2.0 ms/div</option>
-                </select>
-              </div>
-            </div>
+      <div class="img-wrap">
+        <img src="images/exp_dig2_adder_subtractor_8421.svg" alt="加减法器与余3码">
+        <div class="img-caption">图 2-2 74LS83 四位二进制加法/减法器 (图2-8) 与 8421 转余 3 码电路 (图2-9)</div>
+      </div>
+
+      <!-- 四位加减法器在线计算器 -->
+      <div class="calc-box">
+        <h3 style="margin-bottom: 12px; color: #1e3a8a;">🧮 74LS83 + 74LS86 四位二进制加法/减法器在线仿真器</h3>
+        <div class="grid-3">
+          <div class="form-group">
+            <label>被加数/被减数 A (0~15):</label>
+            <input type="number" id="numA" min="0" max="15" value="8">
           </div>
-          <button class="calc-btn" onclick="calculateOscilloscope()">立即换算</button>
-          <div class="calc-result" id="oscResult">
-            ⚡ 峰-峰值 Up-p: 4.00 V | 有效值 Urms (毫伏表读数): 1.41 V<br>
-            ⏱️ 周期 T: 1.00 ms | 频率 f: 1000.00 Hz (1.00 kHz)
+          <div class="form-group">
+            <label>加数/减数 B (0~15):</label>
+            <input type="number" id="numB" min="0" max="15" value="3">
+          </div>
+          <div class="form-group">
+            <label>控制端 M (0=加法, 1=减法):</label>
+            <select id="modeM">
+              <option value="0">M = 0 (加法运算 A + B, C0=0)</option>
+              <option value="1" selected>M = 1 (减法运算 A - B, C0=1)</option>
+            </select>
           </div>
         </div>
+        <button class="calc-btn" onclick="simulateAdderSubtractor()">⚡ 执行加减法运算仿真</button>
+        <div class="calc-result" id="adderResult">
+          🧮 <strong>运算结果：</strong><br>
+          • 被加数 A = 8 (二进制 1000)<br>
+          • 减数 B = 3 (二进制 0011 ➔ M=1 逐位取反为 1100)<br>
+          • 进位端 C0 = 1 (提供补码加 1)<br>
+          • 运算和/差 F = <strong>0101 (十进制 5)</strong><br>
+          • 最高位进位输出 C4 = <strong>1 (无借位，被减数 ≥ 减数)</strong>
+        </div>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <!-- 实验一：模块 3 -->
-    <section id="sec-troubleshooting" class="exp1-sec" style="display:none;">
-      <div class="card">
-        <h2>⚡ 8 种异常波形诊断秘籍（教材思考题重点）</h2>
-        <div class="img-wrap">
-          <img src="images/fig3_waveform_troubleshooting.svg" alt="8种异常波形图解">
-          <div class="img-caption">图 1-3 示波器观察正弦信号常见异常波形图解与调节排除秘籍</div>
-        </div>
+  <!-- ======================== 模电实验一 容器 ======================== -->
+  <div id="exp1-container" class="container" style="display:none;">
+    <div class="card">
+      <h2>⚡ 模电实验一：综合基础练习</h2>
+      <div class="img-wrap">
+        <img src="images/fig1_instrument_connections.svg" alt="实验常用仪器连接拓扑图">
+        <div class="img-caption">图 1-1 模拟电子实验常用仪器设备连接系统拓扑图</div>
       </div>
-    </section>
-
-    <!-- 实验一：模块 4 -->
-    <section id="sec-components" class="exp1-sec" style="display:none;">
-      <div class="card">
-        <h2>🔍 稳压二极管、LED 与三极管极性测试</h2>
-        <div class="img-wrap">
-          <img src="images/fig4_zener_diode_test.svg" alt="稳压管测试原理">
-          <div class="img-caption">图 1-4 稳压二极管 (2CW53) 性能测试原理、电路图与伏安特性</div>
-        </div>
-        <div class="img-wrap">
-          <img src="images/fig5_led_test.svg" alt="LED测试原理">
-          <div class="img-caption">图 1-5 发光二极管 (LED) 测试原理电路与亮度-电流响应关系</div>
-        </div>
-        <div class="img-wrap">
-          <img src="images/fig6_multimeter_pinout_check.svg" alt="万用表管脚判别">
-          <div class="img-caption">图 1-6 万用表判别半导体器件（二极管与晶体管 3DG / 3CG）极性图解</div>
-        </div>
+      <div class="img-wrap">
+        <img src="images/fig2_oscilloscope_panel.svg" alt="示波器测量原理">
+        <div class="img-caption">图 1-2 示波器荧光屏坐标测量原理与核心控制旋钮分区</div>
       </div>
-    </section>
-
-    <!-- 实验一：模块 5 -->
-    <section id="sec-qa" class="exp1-sec" style="display:none;">
-      <div class="card">
-        <h2>💡 实验一 课后重点思考题解答</h2>
-        <div class="callout callout-info">
-          <h4>思考题 1：说明使用示波器观察波形时，为达到下列要求，调节哪些旋钮？</h4>
-          <p>① 清晰且亮度适当：调“辉度”与“聚焦”；② 中央且大小适中：调 Y-POS、X-POS、Volts/div 与 Time/div；③ 完整：调 Time/div 展现 2~3 周期；④ 稳定：调 Trigger Level 旋钮与触发源 SOURCE。</p>
-        </div>
-        <div class="callout callout-warn">
-          <h4>思考题 3：稳压二极管限流电阻 R 必须满足什么条件？</h4>
-          <p>推导不等式：$\frac{U_{I\max} - U_Z}{I_{Z\max} + I_{L\min}} \le R \le \frac{U_{I\min} - U_Z}{I_{Z\min} + I_{L\max}}$。上限保证电网低谷负载最大时不脱离稳压区，下限保证电网高峰负载开路时不烧毁管子。</p>
-        </div>
+      <div class="img-wrap">
+        <img src="images/fig3_waveform_troubleshooting.svg" alt="8种异常波形图解">
+        <div class="img-caption">图 1-3 示波器观察正弦信号常见异常波形图解与调节排除秘籍</div>
       </div>
-    </section>
+      <div class="img-wrap">
+        <img src="images/fig4_zener_diode_test.svg" alt="稳压管测试原理">
+        <div class="img-caption">图 1-4 稳压二极管 (2CW53) 性能测试原理、电路图与伏安特性</div>
+      </div>
+    </div>
   </div>
 
   <!-- ======================== 模电实验二 容器 ======================== -->
   <div id="exp2-container" class="container" style="display:none;">
-    <div class="nav-tabs">
-      <button class="nav-btn active" onclick="showExp2Section('sec-exp2-circuit')">🔬 电路原理图与调Q点</button>
-      <button class="nav-btn" onclick="showExp2Section('sec-exp2-hmodel')">📐 微变等效与动态参数仿真器</button>
-      <button class="nav-btn" onclick="showExp2Section('sec-exp2-distortion')">⚠️ 饱和/截止失真深度解析</button>
-      <button class="nav-btn" onclick="showExp2Section('sec-exp2-sop')">📋 动态测试 SOP 流程</button>
-      <button class="nav-btn" onclick="showExp2Section('sec-exp2-trouble')">💡 故障树与思考题攻关</button>
+    <div class="card">
+      <h2>🔬 模电实验二：单管低频放大电路</h2>
+      <div class="img-wrap">
+        <img src="images/exp2_circuit_schematic.svg" alt="单管低频放大电路原理图">
+        <div class="img-caption">图 2-1 单管低频共发射极电压放大实验电路图</div>
+      </div>
+      <div class="img-wrap">
+        <img src="images/exp2_h_equivalent_circuit.svg" alt="微变等效电路与动态参数测量">
+        <div class="img-caption">图 2-2 简化 h 微变等效电路与动态参数 (Au, Ri, Ro) 测量原理</div>
+      </div>
+      <div class="img-wrap">
+        <img src="images/exp2_distortion_analysis.svg" alt="失真波形机理分析">
+        <div class="img-caption">图 2-3 静态工作点 (Q点) 对共射放大电路输出波形失真的影响机理</div>
+      </div>
     </div>
-
-    <!-- 实验二：模块 1 -->
-    <section id="sec-exp2-circuit" class="exp2-sec">
-      <div class="card">
-        <h2>🔬 单管低频放大电路（图 2-1）</h2>
-        <p>本电路为经典的**单管阻容耦合共发射极放大电路**。核心三极管为 3DG6（NPN 型，$\beta = 50\sim 80$）。</p>
-        <div class="img-wrap">
-          <img src="images/exp2_circuit_schematic.svg" alt="单管低频放大电路原理图">
-          <div class="img-caption">图 2-1 单管低频共发射极电压放大实验电路图</div>
-        </div>
-        <div class="callout callout-info">
-          <h4>🎯 静态工作点（Q点）调试黄金准则：</h4>
-          <p>
-            断开交流输入（$u_i = 0$），将万用表直流电压档接在集电极 $C$ 端，慢慢旋转电位器 $R_p$，使集电极直流电位满足：
-            <strong style="color: #dc2626; font-size: 1.1rem;">$U_C = U_{CE} \approx 6.0\text{V} \sim 8.0\text{V}$</strong>。
-            这样可保证交流负载线上下动态摆幅余量对称，获得最大不失真动态范围！
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 实验二：模块 2 -->
-    <section id="sec-exp2-hmodel" class="exp2-sec" style="display:none;">
-      <div class="card">
-        <h2>📐 微变等效电路与动态参数在线仿真计算器</h2>
-        <div class="img-wrap">
-          <img src="images/exp2_h_equivalent_circuit.svg" alt="微变等效电路与动态参数测量">
-          <div class="img-caption">图 2-2 简化 h 微变等效电路与动态参数 (Au, Ri, Ro) 测量原理</div>
-        </div>
-
-        <!-- 交互仿真器 -->
-        <div class="calc-box">
-          <h3 style="margin-bottom: 12px; color: #1e3a8a;">🧮 单管共射放大电路 Q点 & 动态参数在线仿真器</h3>
-          <div class="grid-4">
-            <div class="form-group">
-              <label>电源电压 Ec (V):</label>
-              <input type="number" id="ecVal" value="12.0" step="0.5">
-            </div>
-            <div class="form-group">
-              <label>集电极电阻 Rc (kΩ):</label>
-              <input type="number" id="rcVal" value="3.0" step="0.1">
-            </div>
-            <div class="form-group">
-              <label>负载电阻 RL (kΩ):</label>
-              <input type="number" id="rlVal" value="3.0" step="0.1">
-            </div>
-            <div class="form-group">
-              <label>三极管电流放大倍数 β:</label>
-              <input type="number" id="betaVal" value="60" step="5">
-            </div>
-          </div>
-          <div class="grid-2">
-            <div class="form-group">
-              <label>总偏置电阻 RB = Rb' + Rp (kΩ):</label>
-              <input type="number" id="rbVal" value="450" step="10">
-            </div>
-            <div class="form-group" style="display:flex; align-items:flex-end;">
-              <button class="calc-btn" onclick="simulateBJT()">⚡ 立即计算仿真静态与动态指标</button>
-            </div>
-          </div>
-
-          <div class="calc-result" id="bjtResult">
-            📊 <strong>直流静态工作点 (Q点)：</strong><br>
-            • 基极电流 IB = (12 - 0.7) / 450k = 25.11 µA<br>
-            • 集电极电流 IC = β·IB = 1.51 mA<br>
-            • 管压降 UCE = 12 - 1.51mA × 3k = 7.48 V (状态：工作点优良，位于线性放大区)<br><br>
-            📐 <strong>交流动态参数：</strong><br>
-            • 晶体管输入电阻 rbe = 200 + 61 × (26 / 1.51) = 1.25 kΩ<br>
-            • 开路电压放大倍数 Auo = - β·Rc / rbe = - 143.9<br>
-            • 带载电压放大倍数 Au = - β·(Rc // RL) / rbe = - 72.0 (反相)<br>
-            • 理论输入电阻 Ri ≈ rbe = 1.25 kΩ | 理论输出电阻 Ro ≈ Rc = 3.0 kΩ
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 实验二：模块 3 -->
-    <section id="sec-exp2-distortion" class="exp2-sec" style="display:none;">
-      <div class="card">
-        <h2>⚠️ 饱和失真 vs 截止失真深度剖析</h2>
-        <div class="img-wrap">
-          <img src="images/exp2_distortion_analysis.svg" alt="失真波形机理分析">
-          <div class="img-caption">图 2-3 静态工作点 (Q点) 对共射放大电路输出波形失真的影响机理</div>
-        </div>
-        <div class="callout callout-danger">
-          <h4>🔥 必考思考题 3 深度辨析（NPN vs PNP 极性倒置）</h4>
-          <p>
-            <strong>NPN 型共射电路：</strong> 饱和失真对应<strong>底部削平（削底）</strong>；截止失真对应<strong>顶部削平（削顶）</strong>！<br>
-            <strong>PNP 型共射电路：</strong> 饱和失真变为<strong>顶部削平（削顶）</strong>；截止失真变为<strong>底部削平（削底）</strong>！两者正好完全相反倒置！
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 实验二：模块 4 -->
-    <section id="sec-exp2-sop" class="exp2-sec" style="display:none;">
-      <div class="card">
-        <h2>📋 动态参数测试标准 SOP 五步流程</h2>
-        <div class="img-wrap">
-          <img src="images/exp2_dynamic_measurement_flow.svg" alt="测试流程全景图">
-          <div class="img-caption">图 2-4 模电实验二 规范化动态参数测试 SOP 流程全景图</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 实验二：模块 5 -->
-    <section id="sec-exp2-trouble" class="exp2-sec" style="display:none;">
-      <div class="card">
-        <h2>💡 故障树与思考题攻关</h2>
-        <div class="img-wrap">
-          <img src="images/exp2_troubleshooting_qpoint.svg" alt="故障排查树">
-          <div class="img-caption">图 2-5 模电实验二 故障树排查图（攻关思考题 2：UC ≈ Ec 根源分析）</div>
-        </div>
-      </div>
-    </section>
   </div>
 
-  <!-- ======================== 完整实验报告 容器 ======================== -->
+  <!-- ======================== 实验报告下载专区 ======================== -->
   <div id="reports-container" class="container" style="display:none;">
-    <div class="nav-tabs">
-      <button class="nav-btn active" onclick="showReportSubTab('rep-exp1')">📄 模电实验一 完整实验报告 (已填表)</button>
-      <button class="nav-btn" onclick="showReportSubTab('rep-exp2')">📄 模电实验二 完整实验报告 (已填表)</button>
-    </div>
-
-    <!-- 实验一完整报告展台 -->
-    <div id="rep-exp1" class="report-sec">
-      <div class="card">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:15px;">
-          <h2>📑 模电实验一：综合基础练习 标准实验报告</h2>
-          <a href="reports/郑州大学_模电实验一_实验报告.docx" download class="download-badge">📥 下载 Word 版报告 (.docx)</a>
-        </div>
-        <div class="callout callout-info">
-          <strong>课程</strong>：模拟电子技术基础实验 | <strong>学院</strong>：电气与信息工程学院 | <strong>专业班级</strong>：电信工程
-        </div>
-
-        <h3 style="margin-top:20px; color:#1e3a8a;">四、数据分析与处理</h3>
-
-        <h4 style="margin-top:15px;">表 1-1 稳压二极管 (2CW53) 测试实测数据 (限流电阻 R=1.0kΩ)</h4>
-        <table>
-          <thead>
-            <tr><th>Ucc (V)</th><th>实测 Uo (V)</th><th>限流电阻压降 UR (V)</th><th>计算回路电流 I (mA)</th><th>稳压状态评估</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>9.00</strong></td><td>6.88</td><td>2.12</td><td><strong>2.12</strong></td><td>进入反向击穿稳压区</td></tr>
-            <tr><td><strong>12.00</strong></td><td>7.02</td><td>4.98</td><td><strong>4.98</strong></td><td>正常反向击穿稳压</td></tr>
-            <tr><td><strong>14.00</strong></td><td>7.10</td><td>6.90</td><td><strong>6.90</strong></td><td>深度反向击穿稳压</td></tr>
-            <tr><td><strong>15.00</strong></td><td>7.14</td><td>7.86</td><td><strong>7.86</strong></td><td>深度反向击穿稳压</td></tr>
-          </tbody>
-        </table>
-        <p style="font-size:0.9rem; color:#475569;">
-          计算公式：$I = \frac{U_{cc} - U_o}{R}$。分析：当 $U_{cc}$ 改变 6V (66.7%) 时，$U_o$ 仅波动 0.26V (3.8%)，充分展现 2CW53 优异稳压性能。
-        </p>
-
-        <h4 style="margin-top:25px;">表 1-2 发光二极管测试实测数据 (限流电阻 R=300Ω，红色 LED)</h4>
-        <table>
-          <thead>
-            <tr><th>供电 Ucc (V)</th><th>实测管压降 Uo (V)</th><th>工作电流 I (mA)</th><th>相对发光亮度观察</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>3.00</strong></td><td>1.86</td><td><strong>3.80</strong></td><td>微亮 (刚刚达到开启门限)</td></tr>
-            <tr><td><strong>4.00</strong></td><td>1.96</td><td><strong>6.80</strong></td><td>较亮 (正常工作，发光饱满)</td></tr>
-            <tr><td><strong>5.00</strong></td><td>2.04</td><td><strong>9.87</strong></td><td>很亮 (高亮工作，未超标)</td></tr>
-          </tbody>
-        </table>
-
-        <h3 style="margin-top:25px; color:#1e3a8a;">五、实验结果与结论</h3>
-        <p>1. 验证了正弦波有效值与峰-峰值关系：$U_{rms} = \frac{U_{p-p}}{2\sqrt{2}}$，实测误差小于 0.1%；<br>
-           2. 稳压管具有反向击穿稳定电压物理特性，发光二极管发光亮度与正向注入电流呈正相关；<br>
-           3. 掌握了示波器异常波形排查技能与万用表半导体器件极性判别标准。</p>
-      </div>
-    </div>
-
-    <!-- 实验二完整报告展台 -->
-    <div id="rep-exp2" class="report-sec" style="display:none;">
-      <div class="card">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:15px;">
-          <h2>📑 模电实验二：单管低频放大电路 标准实验报告</h2>
-          <a href="reports/郑州大学_模电实验二_实验报告.docx" download class="download-badge">📥 下载 Word 版报告 (.docx)</a>
-        </div>
-        <div class="callout callout-info">
-          <strong>课程</strong>：模拟电子技术基础实验 | <strong>三极管</strong>：3DG6 (NPN) | <strong>供电</strong>：+12V
-        </div>
-
-        <h3 style="margin-top:20px; color:#1e3a8a;">四、实测全套数据分析表格</h3>
-
-        <h4 style="margin-top:15px;">表 2-1 静态工作点测试实测数据</h4>
-        <table>
-          <thead>
-            <tr><th>UB (V)</th><th>UC (V)</th><th>UE (V)</th><th>实测 RB (kΩ)</th><th>UBE (V)</th><th>UCE (V)</th><th>计算 IC (mA)</th><th>计算 β</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>0.68</td><td><strong>7.00</strong></td><td>0.00</td><td>442.0</td><td>0.68</td><td>7.00</td><td><strong>1.67</strong></td><td><strong>65.2</strong></td></tr>
-          </tbody>
-        </table>
-
-        <h4 style="margin-top:20px;">表 2-2 电压放大倍数的测试 (ui = 10.0mV, f = 1kHz)</h4>
-        <table>
-          <thead>
-            <tr><th>测试负载条件</th><th>输入 ui (mV)</th><th>输出 uo (mV)</th><th>实测 Au</th><th>理论 rbe (kΩ)</th><th>理论 Au</th><th>相对误差</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>开路 RL = ∞</td><td>10.0</td><td>1480.0</td><td><strong>-148.0</strong></td><td>1.22</td><td>-160.6</td><td>-7.8%</td></tr>
-            <tr><td>带载 RL = 3kΩ</td><td>10.0</td><td>730.0</td><td><strong>-73.0</strong></td><td>1.22</td><td>-80.3</td><td>-9.1%</td></tr>
-          </tbody>
-        </table>
-
-        <div class="grid-2" style="margin-top:10px;">
-          <div>
-            <h4>表 2-3 输入电阻测试 (Rs = 10kΩ)</h4>
-            <table>
-              <thead><tr><th>us (mV)</th><th>ui (mV)</th><th>实测 Ri (kΩ)</th><th>理论 Ri (kΩ)</th></tr></thead>
-              <tbody><tr><td>92.0</td><td>10.0</td><td><strong>1.22</strong></td><td>1.23</td></tr></tbody>
-            </table>
-          </div>
-          <div>
-            <h4>表 2-4 输出电阻测试 (RL = 3kΩ)</h4>
-            <table>
-              <thead><tr><th>uo' (mV)</th><th>uo (mV)</th><th>实测 Ro (kΩ)</th><th>理论 Ro (kΩ)</th></tr></thead>
-              <tbody><tr><td>1480.0</td><td>730.0</td><td><strong>3.08</strong></td><td>3.00</td></tr></tbody>
-            </table>
+    <div class="card">
+      <h2>📑 郑州大学电信学院 标准实验报告（全套已填报实测数据与Word下载）</h2>
+      
+      <div class="grid-2" style="margin-top:20px;">
+        <!-- 数电报告卡片 -->
+        <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:20px;">
+          <h3 style="color:#1e3a8a; margin-bottom:12px;">🔢 数字电子实验报告</h3>
+          <p style="margin-bottom:15px; font-size:0.9rem; color:#475569;">包含 74LS00/20/04/125 逻辑门真值表、多谐振荡实测数据、74LS86 半减器、奇偶校验、74LS83 加减法器及全部思考题规范作答。</p>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="reports/郑州大学_数电实验一_实验报告.docx" download class="download-badge">📥 下载《数电实验一》Word 报告 (.docx)</a>
+            <a href="reports/郑州大学_数电实验一_实验报告.md" class="download-badge" style="background:#475569;">📄 查看《数电实验一》Markdown 全文</a>
+            <a href="reports/郑州大学_数电实验二_实验报告.docx" download class="download-badge">📥 下载《数电实验二》Word 报告 (.docx)</a>
+            <a href="reports/郑州大学_数电实验二_实验报告.md" class="download-badge" style="background:#475569;">📄 查看《数电实验二》Markdown 全文</a>
           </div>
         </div>
 
-        <h4 style="margin-top:20px;">表 2-5 输出波形失真时的静态测试 (ui = 30mV)</h4>
-        <table>
-          <thead>
-            <tr><th>调节状态</th><th>UB (V)</th><th>UC (V)</th><th>UCE (V)</th><th>IC (mA)</th><th>波形特征</th><th>失真性质与原因</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Rp 调至最小</td><td>0.76</td><td>1.15</td><td>1.15</td><td>3.62</td><td><strong>正弦波下半部削平 (削底)</strong></td><td><strong>饱和失真</strong> (Q点过高)</td></tr>
-            <tr><td>Rp 调至最大</td><td>0.58</td><td>11.25</td><td>11.25</td><td>0.25</td><td><strong>正弦波上半部削平 (削顶)</strong></td><td><strong>截止失真</strong> (Q点过低)</td></tr>
-          </tbody>
-        </table>
-
-        <h4 style="margin-top:20px;">表 2-6 静态工作点变化对放大倍数影响测试</h4>
-        <table>
-          <thead>
-            <tr><th>状态</th><th>UC (V)</th><th>IC (mA)</th><th>实测 uo (mV)</th><th>计算 Au</th><th>放大倍数变化规律</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>状态 ①</td><td>9.00</td><td>1.00</td><td>290.0</td><td><strong>-58.0</strong></td><td>IC 较小，增益相对较低</td></tr>
-            <tr><td>状态 ②</td><td>7.50</td><td>1.50</td><td>362.0</td><td><strong>-72.4</strong></td><td>IC 增大，增益明显提升</td></tr>
-          </tbody>
-        </table>
-
-        <h3 style="margin-top:25px; color:#1e3a8a;">五、实验总结与心得</h3>
-        <p>1. 实验充分验证了共射放大电路动态参数与静态工作点 $Q$ 的直接依赖关系；<br>
-           2. 获得了最大不失真输出幅度 $U_{omax} = 2.45\text{V}$（峰峰值高达 $6.93\text{V}$）；<br>
-           3. 熟练掌握了用示波器实时监视波形、用毫伏表精确量测电压的规范化测试方法。</p>
+        <!-- 模电报告卡片 -->
+        <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:20px;">
+          <h3 style="color:#065f46; margin-bottom:12px;">⚡ 模拟电子实验报告</h3>
+          <p style="margin-bottom:15px; font-size:0.9rem; color:#475569;">包含稳压管表 1-1、LED 表 1-2、单管放大静态表 2-1、增益表 2-2、阻抗表 2-3/2-4、失真表 2-5/2-6 及全部思考题答案。</p>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="reports/郑州大学_模电实验一_实验报告.docx" download class="download-badge" style="background:#059669;">📥 下载《模电实验一》Word 报告 (.docx)</a>
+            <a href="reports/郑州大学_模电实验一_实验报告.md" class="download-badge" style="background:#475569;">📄 查看《模电实验一》Markdown 全文</a>
+            <a href="reports/郑州大学_模电实验二_实验报告.docx" download class="download-badge" style="background:#059669;">📥 下载《模电实验二》Word 报告 (.docx)</a>
+            <a href="reports/郑州大学_模电实验二_实验报告.md" class="download-badge" style="background:#475569;">📄 查看《模电实验二》Markdown 全文</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <footer>
-    <p>郑州大学 电气与信息工程学院 · 电工电子中心《模拟电子实验指导书》课程全套辅导</p>
-    <p>Digital & Analog Circuit Lab Repository | 2026</p>
+    <p>郑州大学 电气与信息工程学院 · 电工电子中心《数模电实验》全套课程交互套件</p>
+    <p>ZZU Digital & Analog Circuit Experiments Repository | 2026</p>
   </footer>
 
   <script>
     function switchMainTab(tab) {
+      document.getElementById('dig1-container').style.display = 'none';
+      document.getElementById('dig2-container').style.display = 'none';
       document.getElementById('exp1-container').style.display = 'none';
       document.getElementById('exp2-container').style.display = 'none';
       document.getElementById('reports-container').style.display = 'none';
       document.querySelectorAll('.exp-switch-btn').forEach(btn => btn.classList.remove('active'));
 
-      if (tab === 'exp1') {
+      if (tab === 'dig1') {
+        document.getElementById('dig1-container').style.display = 'block';
+        document.getElementById('btn-dig1').classList.add('active');
+      } else if (tab === 'dig2') {
+        document.getElementById('dig2-container').style.display = 'block';
+        document.getElementById('btn-dig2').classList.add('active');
+      } else if (tab === 'exp1') {
         document.getElementById('exp1-container').style.display = 'block';
         document.getElementById('btn-exp1').classList.add('active');
       } else if (tab === 'exp2') {
@@ -655,83 +441,65 @@
       }
     }
 
-    function showExp1Section(secId) {
-      document.querySelectorAll('.exp1-sec').forEach(el => el.style.display = 'none');
-      document.querySelectorAll('#exp1-container .nav-btn').forEach(btn => btn.classList.remove('active'));
-      document.getElementById(secId).style.display = 'block';
-      event.target.classList.add('active');
-    }
+    function runLogicGate() {
+      const gType = document.getElementById('gateType').value;
+      const a = parseInt(document.getElementById('gateA').value);
+      const b = parseInt(document.getElementById('gateB').value);
+      let out = 0;
+      let desc = "";
 
-    function showExp2Section(secId) {
-      document.querySelectorAll('.exp2-sec').forEach(el => el.style.display = 'none');
-      document.querySelectorAll('#exp2-container .nav-btn').forEach(btn => btn.classList.remove('active'));
-      document.getElementById(secId).style.display = 'block';
-      event.target.classList.add('active');
-    }
-
-    function showReportSubTab(repId) {
-      document.querySelectorAll('.report-sec').forEach(el => el.style.display = 'none');
-      document.querySelectorAll('#reports-container .nav-btn').forEach(btn => btn.classList.remove('active'));
-      document.getElementById(repId).style.display = 'block';
-      event.target.classList.add('active');
-    }
-
-    function calculateOscilloscope() {
-      const dy = parseFloat(document.getElementById('divY').value) || 0;
-      const vDiv = parseFloat(document.getElementById('vDiv').value) || 0;
-      const dx = parseFloat(document.getElementById('divX').value) || 0;
-      const tDiv = parseFloat(document.getElementById('tDiv').value) || 0;
-
-      const vpp = dy * vDiv;
-      const vrms = vpp / (2 * Math.SQRT2);
-      const t = dx * tDiv;
-      const f = t > 0 ? (1 / t) : 0;
-
-      document.getElementById('oscResult').innerHTML = 
-        `⚡ 峰-峰值 Up-p: <strong>${vpp.toFixed(2)} V</strong> | 有效值 Urms (毫伏表读数): <strong>${vrms.toFixed(2)} V</strong><br>` +
-        `⏱️ 周期 T: <strong>${(t * 1000).toFixed(2)} ms</strong> | 频率 f: <strong>${f.toFixed(2)} Hz</strong> (${(f/1000).toFixed(2)} kHz)`;
-    }
-
-    function simulateBJT() {
-      const ec = parseFloat(document.getElementById('ecVal').value) || 12.0;
-      const rc = parseFloat(document.getElementById('rcVal').value) || 3.0;
-      const rl = parseFloat(document.getElementById('rlVal').value) || 3.0;
-      const beta = parseFloat(document.getElementById('betaVal').value) || 60;
-      const rb = parseFloat(document.getElementById('rbVal').value) || 450; // in kΩ
-
-      const ib_mA = (ec - 0.7) / rb;
-      const ib_uA = ib_mA * 1000;
-      const ic_mA = beta * ib_mA;
-      const uce = ec - ic_mA * rc;
-
-      let status = "工作点适中，位于线性放大区";
-      let statusColor = "#15803d";
-      if (uce <= 0.8) {
-        status = "严重饱和失真状态 (UCE 过低，下半周将削底)";
-        statusColor = "#dc2626";
-      } else if (uce >= ec - 1.5) {
-        status = "严重截止失真状态 (UCE 靠近 Ec，上半周将削顶)";
-        statusColor = "#d97706";
+      if (gType === 'nand') {
+        out = (a && b) ? 0 : 1;
+        desc = out ? "与非门满足有0出1规则。" : "两输入全为1，输出为0。";
+      } else if (gType === 'or') {
+        out = (a || b) ? 1 : 0;
+        desc = out ? "或逻辑满足有1出1规则。" : "两输入全为0，输出为0。";
+      } else if (gType === 'nor') {
+        out = !(a || b) ? 1 : 0;
+        desc = out ? "两输入全为0时输出才为高电平1。" : "输入有1，输出为0。";
+      } else if (gType === 'xor') {
+        out = (a ^ b) ? 1 : 0;
+        desc = out ? "两输入电平相异，异或输出高电平1。" : "两输入电平相同，异或输出低电平0。";
       }
 
-      const ie_mA = ic_mA + ib_mA;
-      const rbe_k = 0.2 + (1 + beta) * (0.026 / (ie_mA > 0 ? ie_mA : 0.001));
-      const rl_prime = (rc * rl) / (rc + rl);
+      const v = out ? "4.12V (高电平)" : "0.18V (低电平)";
+      const led = out ? "亮" : "灭";
+      document.getElementById('gateResult').innerHTML = 
+        `💡 <strong>输出端 Y = ${out} (${v}) | LED 状态：${led}</strong><br>逻辑说明：${desc}`;
+    }
 
-      const au0 = - (beta * rc) / rbe_k;
-      const au = - (beta * rl_prime) / rbe_k;
+    function simulateAdderSubtractor() {
+      const a = parseInt(document.getElementById('numA').value) || 0;
+      const b = parseInt(document.getElementById('numB').value) || 0;
+      const m = parseInt(document.getElementById('modeM').value);
 
-      document.getElementById('bjtResult').innerHTML = 
-        `📊 <strong>直流静态工作点 (Q点)：</strong><br>` +
-        `• 基极电流 IB = (${ec} - 0.7) / ${rb}k = <strong>${ib_uA.toFixed(2)} µA</strong><br>` +
-        `• 集电极电流 IC = β·IB = <strong>${ic_mA.toFixed(2)} mA</strong><br>` +
-        `• 管压降 UCE = ${ec} - ${ic_mA.toFixed(2)}mA × ${rc}k = <strong>${uce.toFixed(2)} V</strong> (` +
-        `<span style="color:${statusColor}; font-weight:bold;">${status}</span>)<br><br>` +
-        `📐 <strong>交流动态参数：</strong><br>` +
-        `• 晶体管输入电阻 rbe = <strong>${rbe_k.toFixed(2)} kΩ</strong><br>` +
-        `• 开路电压放大倍数 Auo = <strong>${au0.toFixed(1)}</strong><br>` +
-        `• 带载电压放大倍数 Au = <strong>${au.toFixed(1)}</strong> (180°反相倒相)<br>` +
-        `• 理论输入电阻 Ri ≈ rbe = <strong>${rbe_k.toFixed(2)} kΩ</strong> | 理论输出电阻 Ro ≈ Rc = <strong>${rc.toFixed(1)} kΩ</strong>`;
+      const a_bin = a.toString(2).padStart(4, '0');
+      const b_bin = b.toString(2).padStart(4, '0');
+      
+      let res, c4, desc;
+      if (m === 0) {
+        // 加法
+        const sum = a + b;
+        c4 = sum >= 16 ? 1 : 0;
+        res = (sum % 16).toString(2).padStart(4, '0');
+        desc = `加法运算：${a} + ${b} = ${sum}。加数 B 原码传输，进位输入 C0 = 0。`;
+      } else {
+        // 减法 (补码)
+        const diff = a - b;
+        c4 = a >= b ? 1 : 0; // C4=1 代表无借位
+        const res_val = (diff >= 0) ? diff : (16 + diff);
+        res = res_val.toString(2).padStart(4, '0');
+        desc = `减法运算：${a} - ${b} = ${diff}。加数 B 经异或逐位取反，进位端 C0 = 1 提供补码+1。最高进位 C4 = ${c4} (${c4 ? '无借位' : '产生借位'})。`;
+      }
+
+      document.getElementById('adderResult').innerHTML = 
+        `🧮 <strong>运算结果：</strong><br>` +
+        `• 输入 A = ${a} (二进制 ${a_bin})<br>` +
+        `• 输入 B = ${b} (二进制 ${b_bin})<br>` +
+        `• 控制端 M = ${m} (${m ? '减法模式, C0=1' : '加法模式, C0=0'})<br>` +
+        `• 4位输出 F = <strong>${res} (十进制 ${parseInt(res, 2)})</strong><br>` +
+        `• 进位/借位输出 C4 = <strong>${c4}</strong><br>` +
+        `💡 运算解析：${desc}`;
     }
   </script>
 </body>

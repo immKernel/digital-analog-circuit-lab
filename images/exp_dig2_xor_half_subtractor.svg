@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 560" width="100%" height="100%">
+  <defs>
+    <style>
+      .title { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 20px; font-weight: bold; fill: #0f172a; }
+      .sub { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 13px; fill: #64748b; }
+      .h2 { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 14px; font-weight: bold; fill: #1e3a8a; }
+      .math { font-family: 'Consolas', monospace; font-size: 12px; font-weight: bold; }
+      .pin { font-family: 'Consolas', monospace; font-size: 11px; font-weight: bold; }
+    </style>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <rect width="980" height="560" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2" />
+
+  <text x="490" y="38" text-anchor="middle" class="title">图 2-1 实验二 异或门 (74LS86) 应用：半加器/半减器 · 原反码 · 奇偶校验</text>
+  <text x="490" y="60" text-anchor="middle" class="sub">74LS86 逻辑特性 · 半减器 (图2-3) · 原码/反码发生器 (图2-6) · 四位奇偶校验器 (图2-7)</text>
+
+  <!-- 3 个典型应用模块 -->
+
+  <!-- 1. 半减器 (图 2-3 & 表 2-1) -->
+  <g transform="translate(40, 85)" filter="url(#shadow)">
+    <rect width="280" height="440" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="2" />
+    <text x="20" y="28" class="h2">1. 异或门组成半减器 (图 2-3)</text>
+    <text x="20" y="50" class="math" fill="#b91c1c">差 D = A ⊕ B</text>
+    <text x="20" y="68" class="math" fill="#2563eb">借位 Ci = !A · B</text>
+
+    <!-- 半减器逻辑图 -->
+    <g transform="translate(20, 80)">
+      <line x1="20" y1="35" x2="60" y2="35" stroke="#0f172a" stroke-width="2" /><text x="10" y="39" class="pin">A</text>
+      <line x1="20" y1="75" x2="60" y2="75" stroke="#0f172a" stroke-width="2" /><text x="10" y="79" class="pin">B</text>
+
+      <!-- 异或门 (产生差 D) -->
+      <path d="M 60 20 Q 75 45, 60 70 M 65 20 L 75 20 Q 95 45, 75 70 L 65 70 Q 80 45, 65 20" fill="#eff6ff" stroke="#2563eb" stroke-width="2" />
+      <text x="80" y="49" font-size="12" font-weight="bold" fill="#2563eb">=1</text>
+      <line x1="90" y1="45" x2="140" y2="45" stroke="#0f172a" stroke-width="2" />
+      <circle cx="140" cy="45" r="4" fill="#10b981" /><text x="150" y="49" class="pin" fill="#10b981">D (差)</text>
+
+      <!-- 与门 + 反相器 (产生借位 Ci) -->
+      <line x1="30" y1="35" x2="30" y2="120" stroke="#0f172a" stroke-width="2" />
+      <!-- 反相器 !A -->
+      <polygon points="30,110 30,130 45,120" fill="#ffffff" stroke="#dc2626" stroke-width="1.8" />
+      <circle cx="48" cy="120" r="2.5" fill="#ffffff" stroke="#dc2626" stroke-width="1.8" />
+      <line x1="51" y1="120" x2="80" y2="120" stroke="#0f172a" stroke-width="2" />
+
+      <line x1="45" y1="75" x2="45" y2="140" stroke="#0f172a" stroke-width="2" />
+      <line x1="45" y1="140" x2="80" y2="140" stroke="#0f172a" stroke-width="2" />
+
+      <!-- 与门 -->
+      <path d="M 80 110 L 100 110 A 18 18 0 0 1 100 150 L 80 150 Z" fill="#fee2e2" stroke="#dc2626" stroke-width="2" />
+      <text x="90" y="134" font-size="12" font-weight="bold" fill="#dc2626">&amp;</text>
+      <line x1="118" y1="130" x2="140" y2="130" stroke="#0f172a" stroke-width="2" />
+      <circle cx="140" cy="130" r="4" fill="#ef4444" /><text x="150" y="134" class="pin" fill="#ef4444">Ci (借位)</text>
+    </g>
+
+    <!-- 真值表 2-1 -->
+    <g transform="translate(15, 260)">
+      <rect width="250" height="155" rx="6" fill="#f8fafc" stroke="#cbd5e1" />
+      <text x="125" y="24" text-anchor="middle" font-weight="bold" font-size="12" fill="#0f172a">表 2-1 半减器实测真值表</text>
+      <text x="25" y="52" font-family="Consolas" font-size="11">A  B | D  Ci | 算术意义</text>
+      <text x="25" y="76" font-family="Consolas" font-size="11">0  0 | 0   0 | 0 - 0 = 0</text>
+      <text x="25" y="100" font-family="Consolas" font-size="11" fill="#dc2626">0  1 | 1   1 | 0 - 1 = 1 (借1)</text>
+      <text x="25" y="124" font-family="Consolas" font-size="11">1  0 | 1   0 | 1 - 0 = 1</text>
+      <text x="25" y="146" font-family="Consolas" font-size="11">1  1 | 0   0 | 1 - 1 = 0</text>
+    </g>
+  </g>
+
+  <!-- 2. 原码/反码发生器 (图 2-6 & 表 2-2) -->
+  <g transform="translate(340, 85)" filter="url(#shadow)">
+    <rect width="280" height="440" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="2" />
+    <text x="20" y="28" class="h2">2. 原码/反码发生器 (图 2-6)</text>
+    <text x="20" y="50" class="math" fill="#b91c1c">输出 Yi = Di ⊕ M</text>
+    <text x="20" y="68" font-size="11" fill="#64748b">M 为控制端 (M=0原码, M=1反码)</text>
+
+    <!-- 4 个异或门阵列示意 -->
+    <g transform="translate(20, 85)">
+      <rect width="240" height="150" rx="8" fill="#eff6ff" stroke="#bfdbfe" />
+      <text x="120" y="25" text-anchor="middle" font-weight="bold" font-size="11" fill="#1e40af">4 位可控原/反码电路</text>
+      <text x="20" y="55" font-family="Consolas" font-size="11">控制端 M = 0 时：</text>
+      <text x="35" y="75" font-family="Consolas" font-size="11" fill="#047857">Yi = Di ⊕ 0 = Di (原码输出)</text>
+      <text x="20" y="105" font-family="Consolas" font-size="11">控制端 M = 1 时：</text>
+      <text x="35" y="125" font-family="Consolas" font-size="11" fill="#dc2626">Yi = Di ⊕ 1 = !Di (反码输出)</text>
+    </g>
+
+    <!-- 测试数据表 2-2 摘要 -->
+    <g transform="translate(15, 260)">
+      <rect width="250" height="155" rx="6" fill="#f8fafc" stroke="#cbd5e1" />
+      <text x="125" y="24" text-anchor="middle" font-weight="bold" font-size="12" fill="#0f172a">表 2-2 原/反码测试实测</text>
+      <text x="20" y="50" font-family="Consolas" font-size="10">M | D4 D3 D2 D1 | Y4 Y3 Y2 Y1</text>
+      <text x="20" y="72" font-family="Consolas" font-size="10" fill="#047857">0 | 0  1  0  1  | 0  1  0  1 (原码)</text>
+      <text x="20" y="94" font-family="Consolas" font-size="10" fill="#047857">0 | 1  1  0  0  | 1  1  0  0 (原码)</text>
+      <text x="20" y="118" font-family="Consolas" font-size="10" fill="#dc2626">1 | 0  1  0  1  | 1  0  1  0 (反码)</text>
+      <text x="20" y="140" font-family="Consolas" font-size="10" fill="#dc2626">1 | 1  1  0  0  | 0  0  1  1 (反码)</text>
+    </g>
+  </g>
+
+  <!-- 3. 奇偶校验器 (图 2-7 & 表 2-3) -->
+  <g transform="translate(640, 85)" filter="url(#shadow)">
+    <rect width="300" height="440" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="2" />
+    <text x="20" y="28" class="h2">3. 四位奇偶校验器 (图 2-7)</text>
+    <text x="20" y="50" class="math" fill="#b91c1c">Y = A ⊕ B ⊕ C ⊕ D</text>
+    <text x="20" y="68" font-size="11" fill="#64748b">1 的个数为奇数时输出 1 (灯亮)</text>
+
+    <!-- 级联异或结构 -->
+    <g transform="translate(20, 85)">
+      <rect width="260" height="150" rx="8" fill="#fef3c7" stroke="#fde68a" />
+      <text x="130" y="25" text-anchor="middle" font-weight="bold" font-size="11" fill="#92400e">级联异或逻辑：</text>
+      <text x="20" y="55" font-family="Consolas" font-size="11">Y1 = A ⊕ B</text>
+      <text x="20" y="80" font-family="Consolas" font-size="11">Y2 = Y1 ⊕ C = A ⊕ B ⊕ C</text>
+      <text x="20" y="105" font-family="Consolas" font-size="11">Y  = Y2 ⊕ D = A ⊕ B ⊕ C ⊕ D</text>
+      <text x="20" y="132" font-size="11" font-weight="bold" fill="#b45309">👉 奇数个 1 ➔ 输出高电平 1</text>
+    </g>
+
+    <!-- 表 2-3 实测摘要 -->
+    <g transform="translate(15, 260)">
+      <rect width="270" height="155" rx="6" fill="#f8fafc" stroke="#cbd5e1" />
+      <text x="135" y="24" text-anchor="middle" font-weight="bold" font-size="12" fill="#0f172a">表 2-3 奇偶校验实测规律</text>
+      <text x="20" y="50" font-family="Consolas" font-size="10">ABCD 代码 | 1的个数 | 指示灯状态</text>
+      <text x="20" y="74" font-family="Consolas" font-size="10">1000      | 1 (奇数) | 亮 (逻辑 1)</text>
+      <text x="20" y="96" font-family="Consolas" font-size="10">0110      | 2 (偶数) | 灭 (逻辑 0)</text>
+      <text x="20" y="118" font-family="Consolas" font-size="10">1101      | 3 (奇数) | 亮 (逻辑 1)</text>
+      <text x="20" y="140" font-family="Consolas" font-size="10">1111      | 4 (偶数) | 灭 (逻辑 0)</text>
+    </g>
+  </g>
+</svg>

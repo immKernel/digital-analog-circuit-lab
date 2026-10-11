@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 580" width="100%" height="100%">
+  <defs>
+    <style>
+      .title { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 20px; font-weight: bold; fill: #0f172a; }
+      .sub { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 13px; fill: #64748b; }
+      .chip-t { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 15px; font-weight: bold; fill: #1e3a8a; }
+      .pin-num { font-family: 'Consolas', monospace; font-size: 11px; font-weight: bold; fill: #334155; }
+      .pin-name { font-family: 'Consolas', monospace; font-size: 11px; font-weight: bold; fill: #0f172a; }
+      .gate-txt { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 11px; fill: #475569; }
+    </style>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <rect width="980" height="580" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2" />
+
+  <text x="490" y="38" text-anchor="middle" class="title">图 1-1 实验一 常用数字集成门电路引脚排列与逻辑符号 (DIP-14 封装)</text>
+  <text x="490" y="60" text-anchor="middle" class="sub">74LS20 (双4输入与非) · 74LS00 (四2输入与非) · 74LS04 (六反相器) · 74LS125 (四三态缓冲门)</text>
+
+  <!-- 4 个芯片并排，每个宽 210, 间距 20, x 起始 45 -->
+
+  <!-- 1. 74LS20 -->
+  <g transform="translate(45, 85)" filter="url(#shadow)">
+    <rect width="210" height="400" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="2" />
+    <text x="105" y="30" text-anchor="middle" class="chip-t">74LS20</text>
+    <text x="105" y="48" text-anchor="middle" class="gate-txt">双 4 输入与非门</text>
+
+    <!-- 芯片本体外壳 -->
+    <rect x="55" y="65" width="100" height="260" rx="6" fill="#1e293b" />
+    <!-- 缺口 notch -->
+    <path d="M 95 65 A 10 10 0 0 0 115 65" fill="#ffffff" />
+    
+    <!-- 左侧引脚 1~7 -->
+    <!-- y 步长: 32px -->
+    <!-- Pin 1 -->
+    <line x1="25" y1="85" x2="55" y2="85" stroke="#64748b" stroke-width="3" />
+    <text x="18" y="89" text-anchor="end" class="pin-name">1A</text><text x="63" y="89" class="pin-num" fill="#fff">1</text>
+    <!-- Pin 2 -->
+    <line x1="25" y1="120" x2="55" y2="120" stroke="#64748b" stroke-width="3" />
+    <text x="18" y="124" text-anchor="end" class="pin-name">1B</text><text x="63" y="124" class="pin-num" fill="#fff">2</text>
+    <!-- Pin 3 -->
+    <line x1="25" y1="155" x2="55" y2="155" stroke="#94a3b8" stroke-width="2" />
+    <text x="18" y="159" text-anchor="end" class="pin-name" fill="#94a3b8">NC</text><text x="63" y="159" class="pin-num" fill="#fff">3</text>
+    <!-- Pin 4 -->
+    <line x1="25" y1="190" x2="55" y2="190" stroke="#64748b" stroke-width="3" />
+    <text x="18" y="194" text-anchor="end" class="pin-name">1C</text><text x="63" y="194" class="pin-num" fill="#fff">4</text>
+    <!-- Pin 5 -->
+    <line x1="25" y1="225" x2="55" y2="225" stroke="#64748b" stroke-width="3" />
+    <text x="18" y="229" text-anchor="end" class="pin-name">1D</text><text x="63" y="229" class="pin-num" fill="#fff">5</text>
+    <!-- Pin 6 -->
+    <line x1="25" y1="260" x2="55" y2="260" stroke="#2563eb" stroke-width="3" />
+    <text x="18" y="264" text-anchor="end" class="pin-name" fill="#2563eb">1Y</text><text x="63" y="264" class="pin-num" fill="#fff">6</text>
+    <!-- Pin 7: GND -->
+    <line x1="25" y1="295" x2="55" y2="295" stroke="#0f172a" stroke-width="3" />
+    <text x="18" y="299" text-anchor="end" class="pin-name">GND</text><text x="63" y="299" class="pin-num" fill="#fff">7</text>
+
+    <!-- 右侧引脚 8~14 (从下到上) -->
+    <!-- Pin 8: 2Y -->
+    <line x1="155" y1="295" x2="185" y2="295" stroke="#2563eb" stroke-width="3" />
+    <text x="192" y="299" class="pin-name" fill="#2563eb">2Y</text><text x="142" y="299" class="pin-num" fill="#fff">8</text>
+    <!-- Pin 9: 2A -->
+    <line x1="155" y1="260" x2="185" y2="260" stroke="#64748b" stroke-width="3" />
+    <text x="192" y="264" class="pin-name">2A</text><text x="142" y="264" class="pin-num" fill="#fff">9</text>
+    <!-- Pin 10: 2B -->
+    <line x1="155" y1="225" x2="185" y2="225" stroke="#64748b" stroke-width="3" />
+    <text x="192" y="229" class="pin-name">2B</text><text x="138" y="229" class="pin-num" fill="#fff">10</text>
+    <!-- Pin 11: NC -->
+    <line x1="155" y1="190" x2="185" y2="190" stroke="#94a3b8" stroke-width="2" />
+    <text x="192" y="194" class="pin-name" fill="#94a3b8">NC</text><text x="138" y="194" class="pin-num" fill="#fff">11</text>
+    <!-- Pin 12: 2C -->
+    <line x1="155" y1="155" x2="185" y2="155" stroke="#64748b" stroke-width="3" />
+    <text x="192" y="159" class="pin-name">2C</text><text x="138" y="159" class="pin-num" fill="#fff">12</text>
+    <!-- Pin 13: 2D -->
+    <line x1="155" y1="120" x2="185" y2="120" stroke="#64748b" stroke-width="3" />
+    <text x="192" y="124" class="pin-name">2D</text><text x="138" y="124" class="pin-num" fill="#fff">13</text>
+    <!-- Pin 14: Vcc -->
+    <line x1="155" y1="85" x2="185" y2="85" stroke="#dc2626" stroke-width="3" />
+    <text x="192" y="89" class="pin-name" fill="#dc2626">Vcc</text><text x="138" y="89" class="pin-num" fill="#fff">14</text>
+
+    <!-- 底部逻辑函数 -->
+    <rect x="15" y="340" width="180" height="45" rx="6" fill="#f8fafc" stroke="#e2e8f0" />
+    <text x="105" y="367" text-anchor="middle" font-family="Consolas" font-weight="bold" font-size="12" fill="#1e40af">Y = !(A·B·C·D)</text>
+  </g>
+
+  <!-- 2. 74LS00 -->
+  <g transform="translate(275, 85)" filter="url(#shadow)">
+    <rect width="210" height="400" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="2" />
+    <text x="105" y="30" text-anchor="middle" class="chip-t">74LS00</text>
+    <text x="105" y="48" text-anchor="middle" class="gate-txt">四 2 输入与非门</text>
+
+    <rect x="55" y="65" width="100" height="260" rx="6" fill="#1e293b" />
+    <path d="M 95 65 A 10 10 0 0 0 115 65" fill="#ffffff" />
+
+    <!-- 1A, 1B, 1Y, 2A, 2B, 2Y, GND -->
+    <line x1="25" y1="85" x2="55" y2="85" stroke="#64748b" stroke-width="3" /><text x="18" y="89" text-anchor="end" class="pin-name">1A</text><text x="63" y="89" class="pin-num" fill="#fff">1</text>
+    <line x1="25" y1="120" x2="55" y2="120" stroke="#64748b" stroke-width="3" /><text x="18" y="124" text-anchor="end" class="pin-name">1B</text><text x="63" y="124" class="pin-num" fill="#fff">2</text>
+    <line x1="25" y1="155" x2="55" y2="155" stroke="#2563eb" stroke-width="3" /><text x="18" y="159" text-anchor="end" class="pin-name" fill="#2563eb">1Y</text><text x="63" y="159" class="pin-num" fill="#fff">3</text>
+    <line x1="25" y1="190" x2="55" y2="190" stroke="#64748b" stroke-width="3" /><text x="18" y="194" text-anchor="end" class="pin-name">2A</text><text x="63" y="194" class="pin-num" fill="#fff">4</text>
+    <line x1="25" y1="225" x2="55" y2="225" stroke="#64748b" stroke-width="3" /><text x="18" y="229" text-anchor="end" class="pin-name">2B</text><text x="63" y="229" class="pin-num" fill="#fff">5</text>
+    <line x1="25" y1="260" x2="55" y2="260" stroke="#2563eb" stroke-width="3" /><text x="18" y="264" text-anchor="end" class="pin-name" fill="#2563eb">2Y</text><text x="63" y="264" class="pin-num" fill="#fff">6</text>
+    <line x1="25" y1="295" x2="55" y2="295" stroke="#0f172a" stroke-width="3" /><text x="18" y="299" text-anchor="end" class="pin-name">GND</text><text x="63" y="299" class="pin-num" fill="#fff">7</text>
+
+    <!-- 右侧: 3Y, 3A, 3B, 4Y, 4A, 4B, Vcc -->
+    <line x1="155" y1="295" x2="185" y2="295" stroke="#2563eb" stroke-width="3" /><text x="192" y="299" class="pin-name" fill="#2563eb">3Y</text><text x="142" y="299" class="pin-num" fill="#fff">8</text>
+    <line x1="155" y1="260" x2="185" y2="260" stroke="#64748b" stroke-width="3" /><text x="192" y="264" class="pin-name">3A</text><text x="142" y="264" class="pin-num" fill="#fff">9</text>
+    <line x1="155" y1="225" x2="185" y2="225" stroke="#64748b" stroke-width="3" /><text x="192" y="229" class="pin-name">3B</text><text x="138" y="229" class="pin-num" fill="#fff">10</text>
+    <line x1="155" y1="190" x2="185" y2="190" stroke="#2563eb" stroke-width="3" /><text x="192" y="194" class="pin-name" fill="#2563eb">4Y</text><text x="138" y="194" class="pin-num" fill="#fff">11</text>
+    <line x1="155" y1="155" x2="185" y2="155" stroke="#64748b" stroke-width="3" /><text x="192" y="159" class="pin-name">4A</text><text x="138" y="159" class="pin-num" fill="#fff">12</text>
+    <line x1="155" y1="120" x2="185" y2="120" stroke="#64748b" stroke-width="3" /><text x="192" y="124" class="pin-name">4B</text><text x="138" y="124" class="pin-num" fill="#fff">13</text>
+    <line x1="155" y1="85" x2="185" y2="85" stroke="#dc2626" stroke-width="3" /><text x="192" y="89" class="pin-name" fill="#dc2626">Vcc</text><text x="138" y="89" class="pin-num" fill="#fff">14</text>
+
+    <rect x="15" y="340" width="180" height="45" rx="6" fill="#f8fafc" stroke="#e2e8f0" />
+    <text x="105" y="367" text-anchor="middle" font-family="Consolas" font-weight="bold" font-size="12" fill="#1e40af">Y = !(A·B)</text>
+  </g>
+
+  <!-- 3. 74LS04 -->
+  <g transform="translate(505, 85)" filter="url(#shadow)">
+    <rect width="210" height="400" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="2" />
+    <text x="105" y="30" text-anchor="middle" class="chip-t">74LS04</text>
+    <text x="105" y="48" text-anchor="middle" class="gate-txt">六 反相器</text>
+
+    <rect x="55" y="65" width="100" height="260" rx="6" fill="#1e293b" />
+    <path d="M 95 65 A 10 10 0 0 0 115 65" fill="#ffffff" />
+
+    <line x1="25" y1="85" x2="55" y2="85" stroke="#64748b" stroke-width="3" /><text x="18" y="89" text-anchor="end" class="pin-name">1A</text><text x="63" y="89" class="pin-num" fill="#fff">1</text>
+    <line x1="25" y1="120" x2="55" y2="120" stroke="#2563eb" stroke-width="3" /><text x="18" y="124" text-anchor="end" class="pin-name" fill="#2563eb">1Y</text><text x="63" y="124" class="pin-num" fill="#fff">2</text>
+    <line x1="25" y1="155" x2="55" y2="155" stroke="#64748b" stroke-width="3" /><text x="18" y="159" text-anchor="end" class="pin-name">2A</text><text x="63" y="159" class="pin-num" fill="#fff">3</text>
+    <line x1="25" y1="190" x2="55" y2="190" stroke="#2563eb" stroke-width="3" /><text x="18" y="194" text-anchor="end" class="pin-name" fill="#2563eb">2Y</text><text x="63" y="194" class="pin-num" fill="#fff">4</text>
+    <line x1="25" y1="225" x2="55" y2="225" stroke="#64748b" stroke-width="3" /><text x="18" y="229" text-anchor="end" class="pin-name">3A</text><text x="63" y="229" class="pin-num" fill="#fff">5</text>
+    <line x1="25" y1="260" x2="55" y2="260" stroke="#2563eb" stroke-width="3" /><text x="18" y="264" text-anchor="end" class="pin-name" fill="#2563eb">3Y</text><text x="63" y="264" class="pin-num" fill="#fff">6</text>
+    <line x1="25" y1="295" x2="55" y2="295" stroke="#0f172a" stroke-width="3" /><text x="18" y="299" text-anchor="end" class="pin-name">GND</text><text x="63" y="299" class="pin-num" fill="#fff">7</text>
+
+    <!-- 右侧: 4Y, 4A, 5Y, 5A, 6Y, 6A, Vcc -->
+    <line x1="155" y1="295" x2="185" y2="295" stroke="#2563eb" stroke-width="3" /><text x="192" y="299" class="pin-name" fill="#2563eb">4Y</text><text x="142" y="299" class="pin-num" fill="#fff">8</text>
+    <line x1="155" y1="260" x2="185" y2="260" stroke="#64748b" stroke-width="3" /><text x="192" y="264" class="pin-name">4A</text><text x="142" y="264" class="pin-num" fill="#fff">9</text>
+    <line x1="155" y1="225" x2="185" y2="225" stroke="#2563eb" stroke-width="3" /><text x="192" y="229" class="pin-name" fill="#2563eb">5Y</text><text x="138" y="229" class="pin-num" fill="#fff">10</text>
+    <line x1="155" y1="190" x2="185" y2="190" stroke="#64748b" stroke-width="3" /><text x="192" y="194" class="pin-name">5A</text><text x="138" y="194" class="pin-num" fill="#fff">11</text>
+    <line x1="155" y1="155" x2="185" y2="155" stroke="#2563eb" stroke-width="3" /><text x="192" y="159" class="pin-name" fill="#2563eb">6Y</text><text x="138" y="159" class="pin-num" fill="#fff">12</text>
+    <line x1="155" y1="120" x2="185" y2="120" stroke="#64748b" stroke-width="3" /><text x="192" y="124" class="pin-name">6A</text><text x="138" y="124" class="pin-num" fill="#fff">13</text>
+    <line x1="155" y1="85" x2="185" y2="85" stroke="#dc2626" stroke-width="3" /><text x="192" y="89" class="pin-name" fill="#dc2626">Vcc</text><text x="138" y="89" class="pin-num" fill="#fff">14</text>
+
+    <rect x="15" y="340" width="180" height="45" rx="6" fill="#f8fafc" stroke="#e2e8f0" />
+    <text x="105" y="367" text-anchor="middle" font-family="Consolas" font-weight="bold" font-size="12" fill="#1e40af">Y = !A (反相)</text>
+  </g>
+
+  <!-- 4. 74LS125 -->
+  <g transform="translate(735, 85)" filter="url(#shadow)">
+    <rect width="210" height="400" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="2" />
+    <text x="105" y="30" text-anchor="middle" class="chip-t">74LS125</text>
+    <text x="105" y="48" text-anchor="middle" class="gate-txt">四 三态总线缓冲门</text>
+
+    <rect x="55" y="65" width="100" height="260" rx="6" fill="#1e293b" />
+    <path d="M 95 65 A 10 10 0 0 0 115 65" fill="#ffffff" />
+
+    <!-- !1EN, 1A, 1Q, !2EN, 2A, 2Q, GND -->
+    <line x1="25" y1="85" x2="55" y2="85" stroke="#d97706" stroke-width="3" /><text x="18" y="89" text-anchor="end" class="pin-name" fill="#d97706">/1EN</text><text x="63" y="89" class="pin-num" fill="#fff">1</text>
+    <line x1="25" y1="120" x2="55" y2="120" stroke="#64748b" stroke-width="3" /><text x="18" y="124" text-anchor="end" class="pin-name">1A</text><text x="63" y="124" class="pin-num" fill="#fff">2</text>
+    <line x1="25" y1="155" x2="55" y2="155" stroke="#2563eb" stroke-width="3" /><text x="18" y="159" text-anchor="end" class="pin-name" fill="#2563eb">1Q</text><text x="63" y="159" class="pin-num" fill="#fff">3</text>
+    <line x1="25" y1="190" x2="55" y2="190" stroke="#d97706" stroke-width="3" /><text x="18" y="194" text-anchor="end" class="pin-name" fill="#d97706">/2EN</text><text x="63" y="194" class="pin-num" fill="#fff">4</text>
+    <line x1="25" y1="225" x2="55" y2="225" stroke="#64748b" stroke-width="3" /><text x="18" y="229" text-anchor="end" class="pin-name">2A</text><text x="63" y="229" class="pin-num" fill="#fff">5</text>
+    <line x1="25" y1="260" x2="55" y2="260" stroke="#2563eb" stroke-width="3" /><text x="18" y="264" text-anchor="end" class="pin-name" fill="#2563eb">2Q</text><text x="63" y="264" class="pin-num" fill="#fff">6</text>
+    <line x1="25" y1="295" x2="55" y2="295" stroke="#0f172a" stroke-width="3" /><text x="18" y="299" text-anchor="end" class="pin-name">GND</text><text x="63" y="299" class="pin-num" fill="#fff">7</text>
+
+    <!-- 右侧: 3Q, 3A, /3EN, 4Q, 4A, /4EN, Vcc -->
+    <line x1="155" y1="295" x2="185" y2="295" stroke="#2563eb" stroke-width="3" /><text x="192" y="299" class="pin-name" fill="#2563eb">3Q</text><text x="142" y="299" class="pin-num" fill="#fff">8</text>
+    <line x1="155" y1="260" x2="185" y2="260" stroke="#64748b" stroke-width="3" /><text x="192" y="264" class="pin-name">3A</text><text x="142" y="264" class="pin-num" fill="#fff">9</text>
+    <line x1="155" y1="225" x2="185" y2="225" stroke="#d97706" stroke-width="3" /><text x="192" y="229" class="pin-name" fill="#d97706">/3EN</text><text x="138" y="229" class="pin-num" fill="#fff">10</text>
+    <line x1="155" y1="190" x2="185" y2="190" stroke="#2563eb" stroke-width="3" /><text x="192" y="194" class="pin-name" fill="#2563eb">4Q</text><text x="138" y="194" class="pin-num" fill="#fff">11</text>
+    <line x1="155" y1="155" x2="185" y2="155" stroke="#64748b" stroke-width="3" /><text x="192" y="159" class="pin-name">4A</text><text x="138" y="159" class="pin-num" fill="#fff">12</text>
+    <line x1="155" y1="120" x2="185" y2="120" stroke="#d97706" stroke-width="3" /><text x="192" y="124" class="pin-name" fill="#d97706">/4EN</text><text x="138" y="124" class="pin-num" fill="#fff">13</text>
+    <line x1="155" y1="85" x2="185" y2="85" stroke="#dc2626" stroke-width="3" /><text x="192" y="89" class="pin-name" fill="#dc2626">Vcc</text><text x="138" y="89" class="pin-num" fill="#fff">14</text>
+
+    <rect x="15" y="340" width="180" height="45" rx="6" fill="#f8fafc" stroke="#e2e8f0" />
+    <text x="105" y="360" text-anchor="middle" font-size="11" font-weight="bold" fill="#d97706">/EN=0 时 Q = A</text>
+    <text x="105" y="378" text-anchor="middle" font-size="11" font-weight="bold" fill="#b91c1c">/EN=1 时 高阻态 Hi-Z</text>
+  </g>
+
+  <!-- 底部关键提示 -->
+  <rect x="45" y="500" width="900" height="60" rx="8" fill="#eff6ff" stroke="#bfdbfe" />
+  <text x="65" y="525" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1e40af">💡 TTL 门电路引脚识别与悬空特性规则：</text>
+  <text x="65" y="545" font-family="sans-serif" font-size="11" fill="#1d4ed8">
+    正对缺口朝上，左下角为 7 脚 (GND 接地)，右上角为 14 脚 (Vcc 接 +5V)。TTL 与非门输入端悬空相当于逻辑高电平“1”；但不使用的输入端建议接 +5V 或并接有效输入端，禁止悬空以防噪声干扰。
+  </text>
+</svg>
