@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模电实验一：综合基础练习 全景图解与实验指南 | 郑州大学数模电实验</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg-page: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --accent-green: #10b981;
+      --accent-red: #ef4444;
+      --accent-amber: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+    header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    header h1 { font-size: 2.2rem; margin-bottom: 12px; font-weight: 800; letter-spacing: -0.5px; }
+    header p { font-size: 1.1rem; opacity: 0.9; max-width: 800px; margin: 0 auto; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      margin-bottom: 15px;
+    }
+    .container {
+      max-width: 1080px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    .nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 25px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 12px;
+    }
+    .nav-btn {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .nav-btn:hover { background: #f1f5f9; border-color: #cbd5e1; }
+    .nav-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+    .card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 10px;
+    }
+    .img-wrap {
+      margin: 20px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: white;
+      text-align: center;
+    }
+    .img-wrap img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    .img-caption {
+      padding: 10px;
+      background: #f8fafc;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      font-weight: 500;
+    }
+    .callout {
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border-left: 5px solid;
+    }
+    .callout-info { background: #eff6ff; border-color: #3b82f6; color: #1e40af; }
+    .callout-warn { background: #fffbeb; border-color: #f59e0b; color: #92400e; }
+    .callout-danger { background: #fef2f2; border-color: #ef4444; color: #991b1b; }
+    .callout-success { background: #ecfdf5; border-color: #10b981; color: #065f46; }
+    .callout h4 { margin-bottom: 6px; font-size: 1rem; }
+
+    /* Interactive Calculator */
+    .calc-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 15px;
+    }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .form-group { margin-bottom: 12px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #475569; margin-bottom: 5px; }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      font-size: 0.95rem;
+    }
+    .calc-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s;
+    }
+    .calc-btn:hover { background: var(--primary-hover); }
+    .calc-result {
+      margin-top: 15px;
+      padding: 14px;
+      background: #ffffff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 1rem;
+      color: #1e3a8a;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.95rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      text-align: left;
+    }
+    th { background: #f1f5f9; color: #334155; font-weight: 700; }
+    tr:nth-child(even) { background: #f8fafc; }
+    
+    .troubleshoot-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .troubleshoot-header {
+      padding: 14px 18px;
+      background: #f8fafc;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      user-select: none;
+    }
+    .troubleshoot-header:hover { background: #f1f5f9; }
+    .troubleshoot-body {
+      padding: 16px 18px;
+      display: none;
+      border-top: 1px solid var(--border);
+      background: white;
+    }
+    .troubleshoot-item.active .troubleshoot-body { display: block; }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge">郑州大学 电子技术基础实验 · 模拟电子部分</div>
+    <h1>模电实验一：综合基础练习 全景图解手册</h1>
+    <p>聚焦常用电子仪器（示波器/信号源/毫伏表/稳压电源）的协同操作，以及二极管、稳压管、发光二极管与晶体管的实战判别。</p>
+  </header>
+
+  <div class="container">
+    
+    <!-- 导航菜单 -->
+    <div class="nav-tabs">
+      <button class="nav-btn active" onclick="showSection('sec-overview')">📖 实验综述与仪器连接</button>
+      <button class="nav-btn" onclick="showSection('sec-oscilloscope')">📊 示波器测量与读数换算</button>
+      <button class="nav-btn" onclick="showSection('sec-troubleshooting')">⚡ 8种异常波形排查秘籍</button>
+      <button class="nav-btn" onclick="showSection('sec-components')">🔍 半导体元器件实测与计算</button>
+      <button class="nav-btn" onclick="showSection('sec-qa')">💡 课后重点思考题解答</button>
+    </div>
+
+    <!-- 模块 1：综述与仪器拓扑 -->
+    <section id="sec-overview" class="content-sec">
+      <div class="card">
+        <h2>🧭 实验一定位与目的</h2>
+        <p>作为整个模电实验的<strong>第一关与基石</strong>，本次实验的核心不仅是获得表格数据，更在于规范实验操作习惯，牢固掌握基本测量仪器的协同运作与保护规范。</p>
+        
+        <div class="callout callout-info">
+          <h4>🎯 核心训练指标</h4>
+          <ul>
+            <li>掌握双踪示波器、低频信号发生器、晶体管交流毫伏表、直流稳压电源、万用表面板旋钮的作用。</li>
+            <li>理解正弦波有效值 $U_{rms}$ 与示波器峰-峰值 $U_{p-p}$ 的物理本质与对应换算公式。</li>
+            <li>掌握万用表电阻挡与二极管挡判别二极管、稳压管、LED极性及三极管（3DG/3CG）引脚的方法。</li>
+          </ul>
+        </div>
+
+        <div class="img-wrap">
+          <img src="images/fig1_instrument_connections.svg" alt="实验常用仪器设备连接系统拓扑图">
+          <div class="img-caption">图 1-1 模拟电子实验常用仪器设备连接系统拓扑图（点击右键可放大）</div>
+        </div>
+
+        <div class="callout callout-danger">
+          <h4>⚠️ 实验三大不可触碰红线（防炸机防烧表）</h4>
+          <ol>
+            <li><strong>必须全系统共地</strong>：所有仪器（信号源、示波器、电路板）的接地黑色鳄鱼夹必须全部牢固连接到实验箱的公共地端（GND），防止产生地线环流引入工频干扰。</li>
+            <li><strong>交流毫伏表使用规则</strong>：毫伏表专测正弦交流电，<strong>严禁接入直流电压</strong>！开机及接线时量程必须置于最高档位，测量时<strong>由大量程向小量程逐级换档</strong>。</li>
+            <li><strong>万用表禁止带电测电阻</strong>：绝对不能在电阻档（$\Omega$）下直接测量电源或通电节点电压，否则瞬间烧毁表头保险管。</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 模块 2：示波器读数与换算工具 -->
+    <section id="sec-oscilloscope" class="content-sec" style="display:none;">
+      <div class="card">
+        <h2>📊 示波器坐标测量原理与换算</h2>
+        <p>示波器荧光屏拥有标准 $8 \times 10$ 厘米网格，通过读取波形在垂直与水平方向所占的格数（Div），即可结合旋钮档位精确换算电压幅度与时间周期。</p>
+        
+        <div class="img-wrap">
+          <img src="images/fig2_oscilloscope_panel.svg" alt="示波器荧光屏坐标测量原理与核心控制旋钮分区">
+          <div class="img-caption">图 1-2 示波器荧光屏坐标测量原理与核心控制旋钮分区</div>
+        </div>
+
+        <!-- 交互计算器 -->
+        <div class="calc-box">
+          <h3 style="margin-bottom: 12px; color: #1e293b;">🧮 示波器实时测量与读数在线换算器</h3>
+          <div class="grid-2">
+            <div>
+              <div class="form-group">
+                <label>垂直高度格数 ΔY (div):</label>
+                <input type="number" id="divY" value="4.0" step="0.1">
+              </div>
+              <div class="form-group">
+                <label>垂直衰减档位 (Volts/div):</label>
+                <select id="vDiv">
+                  <option value="0.1">0.1 V/div</option>
+                  <option value="0.2">0.2 V/div</option>
+                  <option value="0.5">0.5 V/div</option>
+                  <option value="1.0" selected>1.0 V/div</option>
+                  <option value="2.0">2.0 V/div</option>
+                  <option value="5.0">5.0 V/div</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <div class="form-group">
+                <label>水平宽度格数 ΔX (div):</label>
+                <input type="number" id="divX" value="4.0" step="0.1">
+              </div>
+              <div class="form-group">
+                <label>扫描时基档位 (Time/div):</label>
+                <select id="tDiv">
+                  <option value="0.0001">0.1 ms/div (100 µs)</option>
+                  <option value="0.00025" selected>0.25 ms/div</option>
+                  <option value="0.0005">0.5 ms/div</option>
+                  <option value="0.001">1.0 ms/div</option>
+                  <option value="0.002">2.0 ms/div</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <button class="calc-btn" onclick="calculateOscilloscope()">立即换算参数</button>
+          <div class="calc-result" id="oscResult">
+            ⚡ 峰-峰值 Up-p: 4.00 V | 有效值 Urms (毫伏表读数): 1.41 V<br>
+            ⏱️ 周期 T: 1.00 ms | 频率 f: 1000.00 Hz (1.00 kHz)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 模块 3：波形故障排查 -->
+    <section id="sec-troubleshooting" class="content-sec" style="display:none;">
+      <div class="card">
+        <h2>⚡ 8 种异常波形排查指南（对应教材图 1-3）</h2>
+        <p>在调试过程中，若示波器波形不正常，请对照下方图解与常见症状，快速定位旋钮问题：</p>
+
+        <div class="img-wrap">
+          <img src="images/fig3_waveform_troubleshooting.svg" alt="示波器观察正弦信号常见异常波形图解">
+          <div class="img-caption">图 1-3 示波器观察正弦信号常见异常波形图解与调节排除秘籍</div>
+        </div>
+
+        <div style="margin-top: 25px;">
+          <div class="troubleshoot-item active">
+            <div class="troubleshoot-header" onclick="toggleItem(this)">
+              <span>情景 (a)：屏幕上只显示一个光斑或一条垂直竖线</span>
+              <span>▼</span>
+            </div>
+            <div class="troubleshoot-body">
+              <strong style="color: #b91c1c;">原因诊断：</strong> 扫描时基被关闭，或示波器误打在 X-Y 工作模式（此时水平偏转板由外接信号控制，无锯齿波扫描发生器介入）。<br>
+              <strong style="color: #047857;">排除手段：</strong> 将水平扫描模式从 X-Y 切出，将触发方式选择为“AUTO”（自动触发），顺时针旋转扫描时基 Time/div 至适当档位。
+            </div>
+          </div>
+
+          <div class="troubleshoot-item">
+            <div class="troubleshoot-header" onclick="toggleItem(this)">
+              <span>情景 (b)：波形偏在荧光屏边缘或出界看不全</span>
+              <span>▼</span>
+            </div>
+            <div class="troubleshoot-body">
+              <strong style="color: #b91c1c;">原因诊断：</strong> 垂直位移（Y-POS）或水平位移（X-POS）旋钮调偏；或者输入耦合为 DC 档，输入信号中含有过大直流偏移分量。<br>
+              <strong style="color: #047857;">排除手段：</strong> 调节面板垂直与水平位移旋钮将波形居中；若仅测交流信号，将输入耦合开关拨至“AC”（阻隔直流电平）。
+            </div>
+          </div>
+
+          <div class="troubleshoot-item">
+            <div class="troubleshoot-header" onclick="toggleItem(this)">
+              <span>情景 (c)：垂直幅度极小，显示为一条细窄波形带</span>
+              <span>▼</span>
+            </div>
+            <div class="troubleshoot-body">
+              <strong style="color: #b91c1c;">原因诊断：</strong> Y 轴衰减开关 Volts/div 档位过大，或者探头打在 10X 衰减位置而示波器未设置补偿。<br>
+              <strong style="color: #047857;">排除手段：</strong> 逆时针调小 Volts/div（例如从 5V/div 调节至 0.5V/div），使波形高度占据荧光屏上下约 1/2 至 2/3 的有效网格。
+            </div>
+          </div>
+
+          <div class="troubleshoot-item">
+            <div class="troubleshoot-header" onclick="toggleItem(this)">
+              <span>情景 (f)：波形左右晃动、无法稳定、出现重叠双影</span>
+              <span>▼</span>
+            </div>
+            <div class="troubleshoot-body">
+              <strong style="color: #b91c1c;">原因诊断：</strong> 触发系统未同步。触发源选择错误（如接在 CH1 却触发 CH2），或者触发电平（Trigger Level）旋钮设得太高/太低，超出了信号峰值范围。<br>
+              <strong style="color: #047857;">排除手段：</strong> 确认触发源（SOURCE）选择与输入通道一致；慢速旋转“触发电平（Level）”旋钮，直至波形完全“定格”在屏幕上。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 模块 4：半导体元件实测与计算 -->
+    <section id="sec-components" class="content-sec" style="display:none;">
+      <div class="card">
+        <h2>🔍 半导体元器件实测与物理规律</h2>
+
+        <!-- 稳压二极管 -->
+        <h3 style="margin: 20px 0 10px; color: #1e3a8a;">1. 稳压二极管 (2CW53) 性能测试</h3>
+        <p>稳压管工作在<strong>反向击穿状态</strong>。在击穿区内，尽管流过稳压管的电流大幅变化，但其两端端电压 $U_o$ 几乎保持恒定（等于标称稳压值 $U_Z$）。</p>
+        
+        <div class="img-wrap">
+          <img src="images/fig4_zener_diode_test.svg" alt="稳压二极管性能测试原理、电路图与伏安特性">
+          <div class="img-caption">图 1-4 稳压二极管 (2CW53) 性能测试原理、电路图与伏安特性</div>
+        </div>
+
+        <div class="calc-box">
+          <h4 style="margin-bottom: 10px;">⚡ 稳压管回路电流快速计算器</h4>
+          <div class="grid-3">
+            <div class="form-group">
+              <label>输入电源 Ucc (V):</label>
+              <input type="number" id="uccZener" value="12.0" step="0.5">
+            </div>
+            <div class="form-group">
+              <label>实测稳压值 Uo (V):</label>
+              <input type="number" id="uoZener" value="7.0" step="0.1">
+            </div>
+            <div class="form-group">
+              <label>限流电阻 R (Ω):</label>
+              <input type="number" id="rZener" value="1000" step="100">
+            </div>
+          </div>
+          <button class="calc-btn" onclick="calculateZener()">计算回路工作电流</button>
+          <div class="calc-result" id="zenerResult">
+            回路电流 I = (12.0 - 7.0) / 1000 = 5.00 mA | 限流电阻分压 UR = 5.00 V
+          </div>
+        </div>
+
+        <!-- 发光二极管 -->
+        <h3 style="margin: 35px 0 10px; color: #15803d;">2. 发光二极管 (LED) 性能测试</h3>
+        <p>发光二极管工作在<strong>正向导通状态</strong>。其正向导通压降相对恒定（约 $1.8\sim 2.1\text{V}$），其发光强度与流过的正向电流 $I$ 呈直接正相关。</p>
+
+        <div class="img-wrap">
+          <img src="images/fig5_led_test.svg" alt="发光二极管测试原理电路与亮度-电流响应关系">
+          <div class="img-caption">图 1-5 发光二极管 (LED) 测试原理电路与亮度-电流响应关系</div>
+        </div>
+
+        <!-- 万用表引脚判别 -->
+        <h3 style="margin: 35px 0 10px; color: #6b21a8;">3. 万用表判别半导体器件极性</h3>
+        <div class="img-wrap">
+          <img src="images/fig6_multimeter_pinout_check.svg" alt="万用表判别半导体器件极性图解">
+          <div class="img-caption">图 1-6 万用表判别半导体器件（二极管与晶体管 3DG / 3CG）极性图解</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 模块 5：思考题与实验报告要求 -->
+    <section id="sec-qa" class="content-sec" style="display:none;">
+      <div class="card">
+        <h2>💡 课后重点思考题标准解答（写实验报告必看）</h2>
+
+        <div class="callout callout-info">
+          <h4>思考题 1：说明使用示波器观察波形时，为达到下列要求，调节哪些旋钮？</h4>
+          <p><strong>① 波形清晰且亮度适当：</strong> 调节“辉度（Intensity）”使明暗适中不刺眼，调节“聚焦（Focus）”与“辅助聚焦”使光迹线条最细最清晰。<br>
+          <strong>② 波形在荧光屏中央且大小适中：</strong> 调节垂直位移（Y-POS）和水平位移（X-POS）将波形拖至中心；调节垂直衰减（Volts/div）使高度占网格高度的 1/2~2/3；调节水平扫描时间（Time/div）使水平宽度铺满屏幕。<br>
+          <strong>③ 波形完整：</strong> 调节水平扫描时间（Time/div），使单屏完整展现 2~3 个完整的正弦波周期。<br>
+          <strong>④ 波形稳定：</strong> 调节“触发电平（Trigger Level）”旋钮，选择正确的“触发源（SOURCE: CH1/CH2）”及“触发方式（AUTO/NORM）”，使扫描发生器与信号周期同步。</p>
+        </div>
+
+        <div class="callout callout-warn">
+          <h4>思考题 3：稳压二极管在正常工作条件下，限流电阻 R 的取值应满足什么条件？</h4>
+          <p><strong>理论推导与解答：</strong><br>
+          设输入直流未稳压电压波动范围为 $U_{I\min} \sim U_{I\max}$，负载电流变化范围为 $I_{L\min} \sim I_{L\max}$，稳压管稳定电压为 $U_Z$，稳定电流范围为 $I_{Z\min} \sim I_{Z\max}$。<br>
+          为确保稳压管既不脱离击穿稳压区（$I_Z \ge I_{Z\min}$），又不会因过流超过最大额定功耗而烧毁（$I_Z \le I_{Z\max}$），限流电阻 $R$ 必须满足：
+          $$\frac{U_{I\max} - U_Z}{I_{Z\max} + I_{L\min}} \le R \le \frac{U_{I\min} - U_Z}{I_{Z\min} + I_{L\max}}$$
+          <strong>物理意义：</strong>
+          <ul>
+            <li><strong>上限确定（防失效）：</strong> 当输入电压处于波谷最低值且负载取最大电流时，剩余流经稳压管的电流仍然不能低于 $I_{Z\min}$；</li>
+            <li><strong>下限确定（防烧毁）：</strong> 当输入电压处于波峰最高值且负载开路时，全部电流流经稳压管，仍不能超过最大允许电流 $I_{Z\max}$。</li>
+          </ul>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>郑州大学 电气与信息工程学院 · 电工电子中心《模拟电子实验指导书》辅导资料</p>
+    <p>Designed for Digital & Analog Circuit Lab Repository</p>
+  </footer>
+
+  <script>
+    function showSection(secId) {
+      document.querySelectorAll('.content-sec').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(secId).style.display = 'block';
+      event.target.classList.add('active');
+    }
+
+    function toggleItem(header) {
+      const parent = header.parentElement;
+      parent.classList.toggle('active');
+    }
+
+    function calculateOscilloscope() {
+      const dy = parseFloat(document.getElementById('divY').value) || 0;
+      const vDiv = parseFloat(document.getElementById('vDiv').value) || 0;
+      const dx = parseFloat(document.getElementById('divX').value) || 0;
+      const tDiv = parseFloat(document.getElementById('tDiv').value) || 0;
+
+      const vpp = dy * vDiv;
+      const vrms = vpp / (2 * Math.SQRT2);
+      const t = dx * tDiv;
+      const f = t > 0 ? (1 / t) : 0;
+
+      document.getElementById('oscResult').innerHTML = 
+        `⚡ 峰-峰值 Up-p: <strong>${vpp.toFixed(2)} V</strong> | 有效值 Urms (毫伏表读数): <strong>${vrms.toFixed(2)} V</strong><br>` +
+        `⏱️ 周期 T: <strong>${(t * 1000).toFixed(2)} ms</strong> | 频率 f: <strong>${f.toFixed(2)} Hz</strong> (${(f/1000).toFixed(2)} kHz)`;
+    }
+
+    function calculateZener() {
+      const ucc = parseFloat(document.getElementById('uccZener').value) || 0;
+      const uo = parseFloat(document.getElementById('uoZener').value) || 0;
+      const r = parseFloat(document.getElementById('rZener').value) || 1000;
+
+      const i = (ucc - uo) / r * 1000; // in mA
+      const ur = ucc - uo;
+
+      document.getElementById('zenerResult').innerHTML = 
+        `回路电流 I = (${ucc} - ${uo}) / ${r} = <strong>${i.toFixed(2)} mA</strong> | 限流电阻分压 UR = <strong>${ur.toFixed(2)} V</strong>`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" width="100%" height="100%">
+  <defs>
+    <style>
+      .title { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 22px; font-weight: bold; fill: #1e293b; }
+      .subtitle { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 14px; fill: #64748b; }
+      .box-title { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 16px; font-weight: bold; fill: #0f172a; }
+      .box-desc { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 13px; fill: #334155; }
+      .tag { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 12px; font-weight: 600; }
+      .wire-label { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 12px; font-weight: bold; }
+    </style>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eff6ff" />
+      <stop offset="100%" stop-color="#dbeafe" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf5ff" />
+      <stop offset="100%" stop-color="#f3e8ff" />
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fffbeb" />
+      <stop offset="100%" stop-color="#fef3c7" />
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ecfdf5" />
+      <stop offset="100%" stop-color="#d1fae5" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef2f2" />
+      <stop offset="100%" stop-color="#fee2e2" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb" />
+    </marker>
+    <marker id="arrow-emerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669" />
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#d97706" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="620" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2" />
+  
+  <!-- Header -->
+  <text x="480" y="45" text-anchor="middle" class="title">图 1-1 模拟电子实验常用仪器设备连接系统拓扑图</text>
+  <text x="480" y="70" text-anchor="middle" class="subtitle">低频信号发生器 ➔ 实验电路 ➔ 示波器 / 晶体管毫伏表（多维协同测量体系）</text>
+
+  <!-- 1. 低频信号发生器 -->
+  <g transform="translate(60, 150)" filter="url(#shadow)">
+    <rect width="210" height="150" rx="12" fill="url(#blueGrad)" stroke="#3b82f6" stroke-width="2" />
+    <rect x="15" y="15" width="40" height="22" rx="4" fill="#3b82f6" />
+    <text x="35" y="31" text-anchor="middle" class="tag" fill="#ffffff">激励</text>
+    <text x="65" y="32" class="box-title">低频信号发生器</text>
+    <text x="15" y="65" class="box-desc">● 提供正弦波/方波/三角波</text>
+    <text x="15" y="88" class="box-desc">● 调节输出频率 (如 1kHz)</text>
+    <text x="15" y="111" class="box-desc">● 调节输出电压幅度 (如 1~5V)</text>
+    <text x="15" y="134" class="box-desc">● 衰减档位 (0dB / 20dB / 40dB)</text>
+  </g>
+
+  <!-- 2. 直流稳压电源 -->
+  <g transform="translate(375, 90)" filter="url(#shadow)">
+    <rect width="210" height="120" rx="12" fill="url(#redGrad)" stroke="#ef4444" stroke-width="2" />
+    <rect x="15" y="15" width="40" height="22" rx="4" fill="#ef4444" />
+    <text x="35" y="31" text-anchor="middle" class="tag" fill="#ffffff">供电</text>
+    <text x="65" y="32" class="box-title">直流稳压电源</text>
+    <text x="15" y="65" class="box-desc">● 提供稳定直流工作点</text>
+    <text x="15" y="88" class="box-desc">● +12V / -12V / +5V 对称电源</text>
+    <text x="15" y="111" class="box-desc">● 粗调与细调旋钮精确定位</text>
+  </g>
+
+  <!-- 3. 被测电路（模拟实验箱） -->
+  <g transform="translate(360, 270)" filter="url(#shadow)">
+    <rect width="240" height="160" rx="12" fill="url(#purpleGrad)" stroke="#8b5cf6" stroke-width="2.5" />
+    <rect x="15" y="15" width="56" height="22" rx="4" fill="#8b5cf6" />
+    <text x="43" y="31" text-anchor="middle" class="tag" fill="#ffffff">核心对象</text>
+    <text x="80" y="32" class="box-title">被测实验电路</text>
+    <text x="15" y="65" class="box-desc">● 单管放大 / 稳压二极管测试</text>
+    <text x="15" y="88" class="box-desc">● 输入端：接入交流激励信号</text>
+    <text x="15" y="111" class="box-desc">● 供电端：引入直流通路 (Vcc)</text>
+    <text x="15" y="134" class="box-desc">● 输出端：负载与信号引出测量</text>
+    <circle cx="15" cy="148" r="4" fill="#8b5cf6" />
+    <text x="25" y="152" font-size="11" fill="#6b21a8" font-family="sans-serif">全系统公共参考地 (GND) 牢固共地</text>
+  </g>
+
+  <!-- 4. 双踪示波器 -->
+  <g transform="translate(680, 140)" filter="url(#shadow)">
+    <rect width="220" height="150" rx="12" fill="url(#amberGrad)" stroke="#f59e0b" stroke-width="2" />
+    <rect x="15" y="15" width="40" height="22" rx="4" fill="#f59e0b" />
+    <text x="35" y="31" text-anchor="middle" class="tag" fill="#ffffff">波形</text>
+    <text x="65" y="32" class="box-title">双踪示波器</text>
+    <text x="15" y="65" class="box-desc">● 实时观察电压随时间动态波形</text>
+    <text x="15" y="88" class="box-desc">● 测定峰-峰值 Up-p 与周期 T</text>
+    <text x="15" y="111" class="box-desc">● 检验波形是否削顶、失真</text>
+    <text x="15" y="134" class="box-desc">● 探头 1X/10X 及接地匹配</text>
+  </g>
+
+  <!-- 5. 晶体管交流毫伏表 -->
+  <g transform="translate(680, 350)" filter="url(#shadow)">
+    <rect width="220" height="150" rx="12" fill="url(#emeraldGrad)" stroke="#10b981" stroke-width="2" />
+    <rect x="15" y="15" width="40" height="22" rx="4" fill="#10b981" />
+    <text x="35" y="31" text-anchor="middle" class="tag" fill="#ffffff">精密</text>
+    <text x="65" y="32" class="box-title">晶体管交流毫伏表</text>
+    <text x="15" y="65" class="box-desc">● 高阻抗精密测定交流有效值 U</text>
+    <text x="15" y="88" class="box-desc">● 仅测量正弦交流，严禁测直流</text>
+    <text x="15" y="111" class="box-desc">● 量程切换严格由大到小调节</text>
+    <text x="15" y="134" class="box-desc">● 关系：Urms = Up-p / (2√2)</text>
+  </g>
+
+  <!-- 连接线 1: 信号源 -> 电路输入 -->
+  <path d="M 270 225 L 360 320" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow-blue)" />
+  <rect x="260" y="260" width="85" height="22" rx="4" fill="#eff6ff" stroke="#93c5fd" />
+  <text x="302" y="275" text-anchor="middle" class="wire-label" fill="#1d4ed8">输入激励信号</text>
+
+  <!-- 连接线 2: 电源 -> 电路供电 -->
+  <path d="M 480 210 L 480 270" fill="none" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-red)" />
+  <rect x="490" y="225" width="90" height="22" rx="4" fill="#fef2f2" stroke="#fca5a5" />
+  <text x="535" y="240" text-anchor="middle" class="wire-label" fill="#b91c1c">DC +12V / GND</text>
+
+  <!-- 连接线 3: 电路输出 -> 示波器 -->
+  <path d="M 600 320 L 680 220" fill="none" stroke="#d97706" stroke-width="3" marker-end="url(#arrow-orange)" />
+  <rect x="610" y="250" width="85" height="22" rx="4" fill="#fffbeb" stroke="#fde68a" />
+  <text x="652" y="265" text-anchor="middle" class="wire-label" fill="#b45309">观测时域波形</text>
+
+  <!-- 连接线 4: 电路输出 -> 毫伏表 -->
+  <path d="M 600 380 L 680 420" fill="none" stroke="#059669" stroke-width="3" marker-end="url(#arrow-emerald)" />
+  <rect x="605" y="405" width="85" height="22" rx="4" fill="#ecfdf5" stroke="#a7f3d0" />
+  <text x="647" y="420" text-anchor="middle" class="wire-label" fill="#047857">测量有效值 U</text>
+
+  <!-- 底部强调栏 -->
+  <g transform="translate(60, 520)">
+    <rect width="840" height="70" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="25" y="28" font-family="sans-serif" font-weight="bold" font-size="14" fill="#0f172a">⚠️ 实验黄金法则：</text>
+    <text x="25" y="52" font-family="sans-serif" font-size="13" fill="#475569">
+      1. 必须统一共地（所有仪器黑夹子探头接系统GND） | 2. 毫伏表开机和换挡遵守“先大量程后小量程” | 3. 万用表严禁用电阻档量测电源与电压！
+    </text>
+  </g>
+</svg>

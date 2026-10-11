@@ -1,0 +1,137 @@
+# -*- coding: utf-8 -*-
+import os
+
+os.makedirs("images", exist_ok=True)
+
+# 2. Oscilloscope Panel & Graticule SVG
+fig2_content = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="100%" height="100%">
+  <defs>
+    <style>
+      .title { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 20px; font-weight: bold; fill: #0f172a; }
+      .sub { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 13px; fill: #64748b; }
+      .panel-title { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 15px; font-weight: bold; fill: #1e293b; }
+      .param-label { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 12px; fill: #334155; }
+      .math-text { font-family: 'Consolas', 'Courier New', monospace; font-size: 14px; font-weight: bold; }
+    </style>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <rect width="960" height="560" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2" />
+  
+  <text x="480" y="40" text-anchor="middle" class="title">图 1-2 示波器荧光屏坐标测量原理与核心控制旋钮分区</text>
+  <text x="480" y="62" text-anchor="middle" class="sub">通过荧光屏 8×10 标准坐标网格精确测量信号峰-峰值 Up-p 与周期 T</text>
+
+  <!-- 左侧：示波器显示屏 -->
+  <g transform="translate(40, 90)">
+    <!-- 屏幕外壳 -->
+    <rect width="420" height="360" rx="14" fill="#0f172a" stroke="#334155" stroke-width="6" filter="url(#shadow)" />
+    <!-- 屏幕发光区 -->
+    <rect x="20" y="20" width="380" height="320" rx="6" fill="#064e3b" opacity="0.9" />
+    
+    <!-- 8x10 网格线 (10宽 x 8高) -->
+    <!-- 宽380 / 10 = 38px每格，高320 / 8 = 40px每格 -->
+    <g stroke="#047857" stroke-width="1" opacity="0.6">
+      <!-- 垂直格线 (10 div) -->
+      <line x1="58" y1="20" x2="58" y2="340" />
+      <line x1="96" y1="20" x2="96" y2="340" />
+      <line x1="134" y1="20" x2="134" y2="340" />
+      <line x1="172" y1="20" x2="172" y2="340" />
+      <line x1="210" y1="20" x2="210" y2="340" stroke-width="1.8" stroke="#10b981" /> <!-- 中心纵轴 -->
+      <line x1="248" y1="20" x2="248" y2="340" />
+      <line x1="286" y1="20" x2="286" y2="340" />
+      <line x1="324" y1="20" x2="324" y2="340" />
+      <line x1="362" y1="20" x2="362" y2="340" />
+
+      <!-- 水平格线 (8 div) -->
+      <line x1="20" y1="60" x2="400" y2="60" />
+      <line x1="20" y1="100" x2="400" y2="100" />
+      <line x1="20" y1="140" x2="400" y2="140" />
+      <line x1="20" y1="180" x2="400" y2="180" stroke-width="1.8" stroke="#10b981" /> <!-- 中心横轴 -->
+      <line x1="20" y1="220" x2="400" y2="220" />
+      <line x1="20" y1="260" x2="400" y2="260" />
+      <line x1="20" y1="300" x2="400" y2="300" />
+    </g>
+
+    <!-- 中心刻度分度细线 -->
+    <g stroke="#10b981" stroke-width="1.2">
+      <!-- 横轴微小刻度 -->
+      <line x1="210" y1="56" x2="210" y2="64" /><line x1="210" y1="96" x2="210" y2="104" />
+      <line x1="210" y1="136" x2="210" y2="144" /><line x1="210" y1="216" x2="210" y2="224" />
+      <line x1="210" y1="256" x2="210" y2="264" /><line x1="210" y1="296" x2="210" y2="304" />
+      <!-- 纵轴微小刻度 -->
+      <line x1="54" y1="180" x2="62" y2="180" /><line x1="92" y1="180" x2="100" y2="180" />
+      <line x1="130" y1="180" x2="138" y2="180" /><line x1="168" y1="180" x2="176" y2="180" />
+      <line x1="244" y1="180" x2="252" y2="180" /><line x1="282" y1="180" x2="290" y2="180" />
+      <line x1="320" y1="180" x2="328" y2="180" /><line x1="358" y1="180" x2="366" y2="180" />
+    </g>
+
+    <!-- 正弦信号波形: 2个周期, 周期=152px (4格), 峰峰值=160px (4格, 振幅80px) -->
+    <!-- 中心y=180, 起始x=58 -->
+    <path d="M 58 180 
+             C 77 100, 115 100, 134 180 
+             C 153 260, 191 260, 210 180 
+             C 229 100, 267 100, 286 180 
+             C 305 260, 343 260, 362 180" 
+          fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" />
+
+    <!-- 垂直峰-峰值测量标注 Up-p -->
+    <line x1="100" y1="100" x2="100" y2="260" stroke="#fbbf24" stroke-width="2" stroke-dasharray="3,3" />
+    <path d="M 96 100 L 104 100 M 96 260 L 104 260" stroke="#fbbf24" stroke-width="2" />
+    <rect x="25" y="165" width="70" height="30" rx="4" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5" />
+    <text x="60" y="185" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">ΔY = 4 div</text>
+
+    <!-- 水平周期测量标注 T -->
+    <line x1="58" y1="310" x2="210" y2="310" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3,3" />
+    <path d="M 58 305 L 58 315 M 210 305 L 210 315" stroke="#38bdf8" stroke-width="2" />
+    <rect x="100" y="318" width="70" height="22" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="135" y="333" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="bold">ΔX = 4 div</text>
+  </g>
+
+  <!-- 右侧：控制旋钮与计算面板 -->
+  <g transform="translate(490, 85)">
+    <!-- 垂直系统 -->
+    <rect width="430" height="105" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5" />
+    <rect x="12" y="12" width="6" height="20" rx="3" fill="#3b82f6" />
+    <text x="26" y="27" class="panel-title">1. 垂直系统 (Y轴) —— 控制信号幅度</text>
+    <text x="15" y="52" class="param-label">● <tspan font-weight="bold">Volts/div 档位</tspan>：设置垂直每格代表的电压（如 1V/div、2V/div）</text>
+    <text x="15" y="72" class="param-label">● <tspan font-weight="bold">微调旋钮 (CAL)</tspan>：必须顺时针旋至“校正锁定位置”，否则读数失真！</text>
+    <text x="15" y="92" class="param-label">● <tspan font-weight="bold">Y-位移 / 耦合方式</tspan>：上下移动波形；AC(隔直)/DC(直流)/GND(接地找基线)</text>
+
+    <!-- 水平系统 -->
+    <rect y="115" width="430" height="105" rx="8" fill="#ffffff" stroke="#7dd3fc" stroke-width="1.5" />
+    <rect x="12" y="127" width="6" height="20" rx="3" fill="#0284c7" />
+    <text x="26" y="142" class="panel-title">2. 水平系统 (X轴) —— 控制时基与扫描</text>
+    <text x="15" y="167" class="param-label">● <tspan font-weight="bold">Time/div 档位</tspan>：设置水平每格代表的时间（如 0.25ms/div、1ms/div）</text>
+    <text x="15" y="187" class="param-label">● <tspan font-weight="bold">微调旋钮 (CAL)</tspan>：测量周期前必须锁死在校正档！</text>
+    <text x="15" y="207" class="param-label">● <tspan font-weight="bold">X-位移 / X-Y模式</tspan>：水平左右平移；测李沙育图形时启用 X-Y 模式</text>
+
+    <!-- 触发系统与显示调节 -->
+    <rect y="230" width="430" height="110" rx="8" fill="#ffffff" stroke="#fcd34d" stroke-width="1.5" />
+    <rect x="12" y="242" width="6" height="20" rx="3" fill="#d97706" />
+    <text x="26" y="257" class="panel-title">3. 触发系统与显示调节 —— 控制波形稳定清晰</text>
+    <text x="15" y="282" class="param-label">● <tspan font-weight="bold">触发电平 (Trigger Level)</tspan>：调节触发比较阈值，消除左右晃动与乱跑</text>
+    <text x="15" y="302" class="param-label">● <tspan font-weight="bold">触发源 (Source)</tspan>：选择同步基准通道（通常设为 CH1 或 CH2）</text>
+    <text x="15" y="322" class="param-label">● <tspan font-weight="bold">辉度与聚焦</tspan>：使荧光屏光线适度清晰、线条最细，严防长时间过亮灼伤屏幕</text>
+
+    <!-- 计算公式看板 -->
+    <rect y="350" width="430" height="115" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="15" y="375" class="panel-title" fill="#0f172a">📐 实测计算范例：</text>
+    <text x="15" y="402" class="math-text" fill="#b45309">Up-p = ΔY × (Volts/div) = 4 div × 1.0 V/div = 4.0 V</text>
+    <text x="15" y="426" class="math-text" fill="#0369a1">周期 T = ΔX × (Time/div) = 4 div × 0.25 ms/div = 1.0 ms</text>
+    <text x="15" y="450" class="math-text" fill="#047857">频率 f = 1 / T = 1 / 1.0ms = 1000 Hz (1 kHz)</text>
+  </g>
+
+  <!-- 底部关键提示 -->
+  <rect x="40" y="465" width="880" height="75" rx="8" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1.5" />
+  <text x="55" y="492" font-family="sans-serif" font-weight="bold" font-size="13" fill="#065f46">💡 毫伏表与示波器换算公式：</text>
+  <text x="55" y="515" font-family="sans-serif" font-size="12" fill="#047857">
+    毫伏表读数反映正弦波有效值 Urms = Up / √2 = Up-p / (2√2) ≈ 4.0V / 2.828 = 1.414 V (若毫伏表显示 1.41V，示波器峰峰值即为 4V)。
+  </text>
+</svg>'''
+
+with open("images/fig2_oscilloscope_panel.svg", "w", encoding="utf-8") as f:
+    f.write(fig2_content)
+
+print("fig2 generated")
