@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 580" width="100%" height="100%">
+  <defs>
+    <style>
+      .title { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 20px; font-weight: bold; fill: #0f172a; }
+      .sub { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 13px; fill: #64748b; }
+      .box-h { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 14px; font-weight: bold; fill: #1e293b; }
+      .math { font-family: 'Consolas', monospace; font-size: 13px; font-weight: bold; fill: #0f172a; }
+      .desc { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 11px; fill: #475569; }
+    </style>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <rect width="980" height="580" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2" />
+
+  <text x="490" y="38" text-anchor="middle" class="title">图 2-2 简化 h 微变等效电路与动态参数 (Au, Ri, Ro) 测量原理</text>
+  <text x="490" y="60" text-anchor="middle" class="sub">三极管线性微变模型 · 放大倍数理论推导 · 输入/输出电阻等效测试法</text>
+
+  <!-- 左侧：简化 h 微变等效电路 (图 2-2) -->
+  <g transform="translate(40, 85)" filter="url(#shadow)">
+    <rect width="440" height="290" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="2" />
+    <text x="20" y="30" class="box-h">图 2-2 简化 h 参数微变等效电路</text>
+
+    <!-- 交流回路 -->
+    <!-- 输入端 ui -->
+    <circle cx="45" cy="110" r="4" fill="#2563eb" />
+    <circle cx="45" cy="220" r="4" fill="#2563eb" />
+    <text x="35" y="165" text-anchor="middle" font-weight="bold" fill="#2563eb" font-size="13">ui</text>
+    <line x1="45" y1="110" x2="110" y2="110" stroke="#0f172a" stroke-width="2" />
+    <line x1="45" y1="220" x2="400" y2="220" stroke="#0f172a" stroke-width="2" />
+
+    <!-- 电阻 RB 支路 (可忽略或并联) -->
+    <line x1="100" y1="110" x2="100" y2="140" stroke="#0f172a" stroke-width="2" />
+    <rect x="92" y="140" width="16" height="35" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.8" />
+    <text x="80" y="162" text-anchor="end" font-size="11" font-weight="bold">RB</text>
+    <line x1="100" y1="175" x2="100" y2="220" stroke="#0f172a" stroke-width="2" />
+
+    <!-- 输入回路 rbe -->
+    <line x1="100" y1="110" x2="170" y2="110" stroke="#0f172a" stroke-width="2" />
+    <line x1="170" y1="110" x2="170" y2="140" stroke="#0f172a" stroke-width="2" />
+    <rect x="162" y="140" width="16" height="35" fill="#fef3c7" stroke="#d97706" stroke-width="2" />
+    <text x="195" y="162" font-size="11" font-weight="bold" fill="#d97706">rbe</text>
+    <line x1="170" y1="175" x2="170" y2="220" stroke="#0f172a" stroke-width="2" />
+
+    <!-- 输入基极电流 Ib 标注 -->
+    <path d="M 125 105 L 145 105 M 145 105 L 140 101 M 145 105 L 140 109" stroke="#2563eb" stroke-width="2" />
+    <text x="135" y="98" text-anchor="middle" font-size="11" font-weight="bold" fill="#2563eb">ib</text>
+
+    <!-- 受控电流源 β·ib (菱形符号) -->
+    <g transform="translate(260, 160)">
+      <polygon points="0,-22 18,0 0,22 -18,0" fill="#fee2e2" stroke="#dc2626" stroke-width="2" />
+      <!-- 电流方向向下箭头 -->
+      <line x1="0" y1="-12" x2="0" y2="12" stroke="#dc2626" stroke-width="2" />
+      <polygon points="0,14 -4,7 4,7" fill="#dc2626" />
+      <text x="25" y="5" font-size="12" font-weight="bold" fill="#dc2626">β·ib</text>
+    </g>
+    <line x1="260" y1="110" x2="260" y2="138" stroke="#0f172a" stroke-width="2" />
+    <line x1="260" y1="182" x2="260" y2="220" stroke="#0f172a" stroke-width="2" />
+
+    <!-- 输出电阻 Rc -->
+    <line x1="260" y1="110" x2="330" y2="110" stroke="#0f172a" stroke-width="2" />
+    <line x1="330" y1="110" x2="330" y2="140" stroke="#0f172a" stroke-width="2" />
+    <rect x="322" y="140" width="16" height="35" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.8" />
+    <text x="312" y="162" text-anchor="end" font-size="11" font-weight="bold">Rc</text>
+    <line x1="330" y1="175" x2="330" y2="220" stroke="#0f172a" stroke-width="2" />
+
+    <!-- 负载电阻 RL -->
+    <line x1="330" y1="110" x2="390" y2="110" stroke="#0f172a" stroke-width="2" />
+    <line x1="390" y1="110" x2="390" y2="140" stroke="#0f172a" stroke-width="2" />
+    <rect x="382" y="140" width="16" height="35" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.8" />
+    <text x="412" y="162" font-size="11" font-weight="bold">RL</text>
+    <line x1="390" y1="175" x2="390" y2="220" stroke="#0f172a" stroke-width="2" />
+
+    <!-- 输出端 uo -->
+    <circle cx="420" cy="110" r="4" fill="#2563eb" />
+    <circle cx="420" cy="220" r="4" fill="#2563eb" />
+    <line x1="390" y1="110" x2="420" y2="110" stroke="#0f172a" stroke-width="2" />
+    <text x="420" y="165" text-anchor="middle" font-weight="bold" fill="#2563eb" font-size="13">uo</text>
+
+    <!-- 公式说明 -->
+    <rect x="20" y="235" width="400" height="42" rx="6" fill="#eff6ff" />
+    <text x="30" y="254" class="math" fill="#1d4ed8">Au = uo / ui = - β · (Rc // RL) / rbe</text>
+    <text x="30" y="270" class="desc">负号表示输出波形与输入波形反相 180°！</text>
+  </g>
+
+  <!-- 右侧：动态参数测量原理 (图 2-3 & 图 2-4) -->
+  <g transform="translate(500, 85)" filter="url(#shadow)">
+    <rect width="440" height="290" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+    <text x="20" y="30" class="box-h">动态参数等效测量原理</text>
+
+    <!-- 输入电阻 Ri 测量 (图 2-3) -->
+    <g transform="translate(20, 45)">
+      <rect width="400" height="95" rx="8" fill="#f8fafc" stroke="#e2e8f0" />
+      <text x="15" y="22" font-size="12" font-weight="bold" fill="#0f172a">1. 输入电阻 Ri 测量原理（串联电阻比较法）：</text>
+      <!-- 简易串联图 -->
+      <circle cx="40" cy="55" r="12" fill="#eff6ff" stroke="#2563eb" />
+      <text x="40" y="58" text-anchor="middle" font-size="9" font-weight="bold">us</text>
+      <line x1="52" y1="55" x2="80" y2="55" stroke="#0f172a" stroke-width="1.5" />
+      <rect x="80" y="48" width="30" height="14" fill="#ffffff" stroke="#0f172a" />
+      <text x="95" y="59" text-anchor="middle" font-size="8">Rs</text>
+      <line x1="110" y1="55" x2="140" y2="55" stroke="#0f172a" stroke-width="1.5" />
+      <rect x="140" y="42" width="35" height="26" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5" />
+      <text x="157" y="58" text-anchor="middle" font-size="10" font-weight="bold" fill="#2563eb">Ri</text>
+      <line x1="40" y1="67" x2="40" y2="80" stroke="#0f172a" stroke-width="1.5" />
+      <line x1="40" y1="80" x2="175" y2="80" stroke="#0f172a" stroke-width="1.5" />
+      <line x1="157" y1="68" x2="157" y2="80" stroke="#0f172a" stroke-width="1.5" />
+      
+      <text x="200" y="52" class="math" fill="#b91c1c">Ri = [ui / (us - ui)] · Rs</text>
+      <text x="200" y="72" class="desc">理论值：Ri = RB // rbe ≈ rbe</text>
+    </g>
+
+    <!-- 输出电阻 Ro 测量 (图 2-4) -->
+    <g transform="translate(20, 155)">
+      <rect width="400" height="115" rx="8" fill="#f8fafc" stroke="#e2e8f0" />
+      <text x="15" y="22" font-size="12" font-weight="bold" fill="#0f172a">2. 输出电阻 Ro 测量原理（带载/开路法）：</text>
+      <!-- 简易戴维南等效图 -->
+      <circle cx="40" cy="55" r="12" fill="#eff6ff" stroke="#2563eb" />
+      <text x="40" y="58" text-anchor="middle" font-size="9" font-weight="bold">uo'</text>
+      <line x1="52" y1="55" x2="80" y2="55" stroke="#0f172a" stroke-width="1.5" />
+      <rect x="80" y="48" width="30" height="14" fill="#ffffff" stroke="#0f172a" />
+      <text x="95" y="59" text-anchor="middle" font-size="8">Ro</text>
+      <line x1="110" y1="55" x2="140" y2="55" stroke="#0f172a" stroke-width="1.5" />
+      <rect x="140" y="48" width="30" height="14" fill="#fef3c7" stroke="#d97706" />
+      <text x="155" y="59" text-anchor="middle" font-size="8">RL</text>
+      <line x1="40" y1="67" x2="40" y2="80" stroke="#0f172a" stroke-width="1.5" />
+      <line x1="40" y1="80" x2="155" y2="80" stroke="#0f172a" stroke-width="1.5" />
+      <line x1="155" y1="62" x2="155" y2="80" stroke="#0f172a" stroke-width="1.5" />
+
+      <text x="200" y="52" class="math" fill="#b91c1c">Ro = [(uo' - uo) / uo] · RL</text>
+      <text x="200" y="72" class="desc">uo': 开路输出电压 (RL = ∞)</text>
+      <text x="200" y="90" class="desc">uo: 接入 RL (3kΩ) 后的输出电压；理论值 Ro ≈ Rc</text>
+    </g>
+  </g>
+
+  <!-- 底部理论核心计算公式看板 -->
+  <g transform="translate(40, 395)">
+    <rect width="900" height="160" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadow)" />
+    <text x="20" y="28" font-size="14" font-weight="bold" fill="#0f172a">📐 模电实验二 理论计算核心金公式：</text>
+
+    <g transform="translate(20, 45)">
+      <rect width="270" height="95" rx="8" fill="#f8fafc" stroke="#e2e8f0" />
+      <text x="15" y="25" font-size="12" font-weight="bold" fill="#1e40af">1. 晶体管输入电阻 rbe</text>
+      <text x="15" y="50" class="math" font-size="12">rbe = 200Ω + (1+β)·(26mV / IE)</text>
+      <text x="15" y="75" font-size="11" fill="#64748b">若 IE ≈ 1.5mA, β=60 ➔ rbe ≈ 1.25 kΩ</text>
+    </g>
+
+    <g transform="translate(310, 45)">
+      <rect width="270" height="95" rx="8" fill="#f8fafc" stroke="#e2e8f0" />
+      <text x="15" y="25" font-size="12" font-weight="bold" fill="#047857">2. 电压放大倍数 Au</text>
+      <text x="15" y="50" class="math" font-size="12">Au = - β · RL' / rbe</text>
+      <text x="15" y="75" font-size="11" fill="#64748b">开路: RL'=Rc=3kΩ ➔ Au0 ≈ -144<br>带载: RL'=Rc//RL=1.5kΩ ➔ Au ≈ -72</text>
+    </g>
+
+    <g transform="translate(600, 45)">
+      <rect width="280" height="95" rx="8" fill="#f8fafc" stroke="#e2e8f0" />
+      <text x="15" y="25" font-size="12" font-weight="bold" fill="#b45309">3. 静态工作点 Q 点估算</text>
+      <text x="15" y="48" class="math" font-size="11">IB = (Ec - 0.7V) / RB</text>
+      <text x="15" y="68" class="math" font-size="11">IC = β·IB,  UCE = Ec - IC·Rc</text>
+      <text x="15" y="88" font-size="11" fill="#64748b">调试目标：UC = UCE ≈ 6V~8V</text>
+    </g>
+  </g>
+</svg>

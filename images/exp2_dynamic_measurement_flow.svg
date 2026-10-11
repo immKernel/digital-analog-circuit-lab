@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 500" width="100%" height="100%">
+  <defs>
+    <style>
+      .title { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 20px; font-weight: bold; fill: #0f172a; }
+      .sub { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 13px; fill: #64748b; }
+      .step-t { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 14px; font-weight: bold; fill: #0f172a; }
+      .step-c { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 11px; fill: #475569; }
+      .num { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 13px; font-weight: bold; fill: #ffffff; }
+    </style>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <rect width="980" height="500" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2" />
+
+  <text x="490" y="38" text-anchor="middle" class="title">图 2-4 模电实验二 规范化动态参数测试 SOP 流程全景图</text>
+  <text x="490" y="60" text-anchor="middle" class="sub">从静态调零到动态测幅、阻抗测定、失真观察的五步标准实验路径</text>
+
+  <!-- 5 个步骤卡片横向流转 -->
+  <!-- 宽 165, 间距 18, x起始 40 -->
+
+  <!-- 步骤 1 -->
+  <g transform="translate(40, 85)" filter="url(#shadow)">
+    <rect width="168" height="280" rx="10" fill="#ffffff" stroke="#93c5fd" stroke-width="1.8" />
+    <circle cx="32" cy="30" r="14" fill="#2563eb" />
+    <text x="32" y="35" text-anchor="middle" class="num">1</text>
+    <text x="55" y="35" class="step-t">调静态工作点</text>
+    
+    <text x="15" y="75" class="step-c">● <tspan font-weight="bold">断开输入信号</tspan> (ui = 0)</text>
+    <text x="15" y="98" class="step-c">● 接通 +12V 直流电源</text>
+    <text x="15" y="121" class="step-c">● 用万用表测集电极电位 UC</text>
+    <text x="15" y="144" class="step-c">● 细调电位器 Rp 使：<br>&nbsp;&nbsp;<tspan font-weight="bold" fill="#dc2626">UC = 6.0 ~ 8.0 V</tspan></text>
+    <text x="15" y="185" class="step-c">● 测出 UB, UE, UBE, UCE</text>
+    <text x="15" y="208" class="step-c">● 断电拆测 RB 阻值</text>
+    <text x="15" y="235" font-size="11" font-weight="bold" fill="#2563eb">完成表 2-1 记录</text>
+  </g>
+
+  <!-- 步骤 2 -->
+  <g transform="translate(225, 85)" filter="url(#shadow)">
+    <rect width="168" height="280" rx="10" fill="#ffffff" stroke="#93c5fd" stroke-width="1.8" />
+    <circle cx="32" cy="30" r="14" fill="#2563eb" />
+    <text x="32" y="35" text-anchor="middle" class="num">2</text>
+    <text x="55" y="35" class="step-t">接入正弦激励</text>
+    
+    <text x="15" y="75" class="step-c">● 信号源置于正弦波</text>
+    <text x="15" y="98" class="step-c">● 设定频率 <tspan font-weight="bold">f = 1 kHz</tspan></text>
+    <text x="15" y="121" class="step-c">● 调节信号源幅度微调</text>
+    <text x="15" y="144" class="step-c">● 示波器监视输出 uo</text>
+    <text x="15" y="167" class="step-c">● 确保波形完全不失真</text>
+    <text x="15" y="195" class="step-c">● 将毫伏表探头接 ui 端</text>
+    <text x="15" y="218" class="step-c">● 调定 ui = 5 ~ 10 mV</text>
+    <text x="15" y="245" font-size="11" font-weight="bold" fill="#2563eb">确保小信号线性放大</text>
+  </g>
+
+  <!-- 步骤 3 -->
+  <g transform="translate(410, 85)" filter="url(#shadow)">
+    <rect width="168" height="280" rx="10" fill="#ffffff" stroke="#93c5fd" stroke-width="1.8" />
+    <circle cx="32" cy="30" r="14" fill="#2563eb" />
+    <text x="32" y="35" text-anchor="middle" class="num">3</text>
+    <text x="55" y="35" class="step-t">测增益与阻抗</text>
+    
+    <text x="15" y="75" class="step-c">● <tspan font-weight="bold">测 Au：</tspan>毫伏表测 ui 与 uo</text>
+    <text x="15" y="98" class="step-c">● 断开 RL 测得空载 uo'</text>
+    <text x="15" y="121" class="step-c">● 接上 RL 测得带载 uo</text>
+    <text x="15" y="148" class="step-c">● <tspan font-weight="bold">测 Ri：</tspan>测 us 与 ui</text>
+    <text x="15" y="171" class="step-c">计算 Ri = [ui/(us-ui)]·Rs</text>
+    <text x="15" y="200" class="step-c">● <tspan font-weight="bold">测 Ro：</tspan>代入公式</text>
+    <text x="15" y="223" class="step-c">Ro = [(uo'-uo)/uo]·RL</text>
+    <text x="15" y="250" font-size="11" font-weight="bold" fill="#2563eb">完成表 2-2 ~ 2-4</text>
+  </g>
+
+  <!-- 步骤 4 -->
+  <g transform="translate(595, 85)" filter="url(#shadow)">
+    <rect width="168" height="280" rx="10" fill="#ffffff" stroke="#fca5a5" stroke-width="1.8" />
+    <circle cx="32" cy="30" r="14" fill="#dc2626" />
+    <text x="32" y="35" text-anchor="middle" class="num">4</text>
+    <text x="55" y="35" class="step-t">失真特征观测</text>
+    
+    <text x="15" y="75" class="step-c">● 将 Rs 短路加大输入信号</text>
+    <text x="15" y="98" class="step-c">● 使 ui 升至 20~40 mV</text>
+    <text x="15" y="125" class="step-c">● <tspan font-weight="bold">调 Rp 最小：</tspan>记录波形及 UB, UC（底部削平-饱和）</text>
+    <text x="15" y="165" class="step-c">● <tspan font-weight="bold">调 Rp 最大：</tspan>记录波形及 UB, UC（顶部削平-截止）</text>
+    <text x="15" y="205" class="step-c">● 恢复正常并测静点对 Au 影响（UC=9V vs 7.5V）</text>
+    <text x="15" y="245" font-size="11" font-weight="bold" fill="#dc2626">完成表 2-5 &amp; 2-6</text>
+  </g>
+
+  <!-- 步骤 5 -->
+  <g transform="translate(780, 85)" filter="url(#shadow)">
+    <rect width="160" height="280" rx="10" fill="#ffffff" stroke="#86efac" stroke-width="1.8" />
+    <circle cx="32" cy="30" r="14" fill="#16a34a" />
+    <text x="32" y="35" text-anchor="middle" class="num">5</text>
+    <text x="55" y="35" class="step-t">最大不失真幅度</text>
+    
+    <text x="15" y="75" class="step-c">● 将 Q 点恢复至中央</text>
+    <text x="15" y="98" class="step-c">● 缓慢逐次增大信号源 ui</text>
+    <text x="15" y="125" class="step-c">● 示波器严密监测波形</text>
+    <text x="15" y="152" class="step-c">● 寻找<tspan font-weight="bold" fill="#059669">临界失真点</tspan>（上下峰值即将削平前瞬间）</text>
+    <text x="15" y="195" class="step-c">● 毫伏表读取此时电压</text>
+    <text x="15" y="218" class="step-c">● 记下最大输出 Uomax</text>
+    <text x="15" y="245" font-size="11" font-weight="bold" fill="#16a34a">收工整理数据与关机</text>
+  </g>
+
+  <!-- 底部强调规范 -->
+  <g transform="translate(40, 390)">
+    <rect width="900" height="80" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="25" y="30" font-size="13" font-weight="bold" fill="#0f172a">⚠️ 动态测试三大实操铁律：</text>
+    <text x="25" y="52" font-size="12" fill="#334155">
+      1. 测电压放大倍数时，示波器与毫伏表必须同时并联在输出端（示波器看波形是否失真，毫伏表读有效值，二者缺一不可！）。<br>
+      2. 测输入电阻 Ri 时，注意区分信号源开路端电压 us 与放大电路输入端电压 ui（二者相差在内阻 Rs 上的压降）。
+    </text>
+  </g>
+</svg>

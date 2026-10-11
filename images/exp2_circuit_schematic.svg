@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="100%" height="100%">
+  <defs>
+    <style>
+      .title { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 20px; font-weight: bold; fill: #0f172a; }
+      .sub { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 13px; fill: #64748b; }
+      .comp-label { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 13px; font-weight: bold; fill: #0f172a; }
+      .val-label { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 11px; fill: #475569; }
+      .node-txt { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 12px; font-weight: bold; fill: #2563eb; }
+      .dc-note { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 12px; fill: #b91c1c; }
+      .ac-note { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 12px; fill: #047857; }
+    </style>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <rect width="960" height="580" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2" />
+
+  <text x="480" y="38" text-anchor="middle" class="title">图 2-1 单管低频共发射极电压放大实验电路图</text>
+  <text x="480" y="60" text-anchor="middle" class="sub">三极管 3DG6 (NPN) · 阻容耦合 · 分压式偏置电位器调节静态工作点 Q</text>
+
+  <!-- 主电路绘制区 -->
+  <g transform="translate(60, 85)" filter="url(#shadow)">
+    <rect width="840" height="420" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+
+    <!-- 电源轨 +12V -->
+    <line x1="260" y1="40" x2="680" y2="40" stroke="#dc2626" stroke-width="3" />
+    <circle cx="680" cy="40" r="5" fill="#dc2626" />
+    <text x="695" y="45" font-family="sans-serif" font-weight="bold" font-size="15" fill="#dc2626">Ec = +12V</text>
+
+    <!-- 地线轨 GND -->
+    <line x1="60" y1="360" x2="740" y2="360" stroke="#0f172a" stroke-width="3" />
+    <!-- 接地符号 -->
+    <path d="M 400 360 L 400 380 M 385 380 L 415 380 M 390 385 L 410 385 M 395 390 L 405 390" stroke="#0f172a" stroke-width="2" />
+    <text x="400" y="405" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">GND (0V)</text>
+
+    <!-- 1. 信号源与信号源内阻 Rs -->
+    <!-- 信号源 us -->
+    <circle cx="80" cy="240" r="18" fill="#eff6ff" stroke="#2563eb" stroke-width="2" />
+    <path d="M 70 240 Q 75 233, 80 240 T 90 240" fill="none" stroke="#2563eb" stroke-width="2" />
+    <text x="80" y="275" text-anchor="middle" class="comp-label">us</text>
+    <line x1="80" y1="258" x2="80" y2="360" stroke="#0f172a" stroke-width="2" />
+    <line x1="80" y1="222" x2="80" y2="200" stroke="#0f172a" stroke-width="2" />
+    <line x1="80" y1="200" x2="130" y2="200" stroke="#0f172a" stroke-width="2" />
+
+    <!-- 电阻 Rs = 10k -->
+    <rect x="130" y="190" width="45" height="20" fill="#f1f5f9" stroke="#0f172a" stroke-width="2" />
+    <text x="152" y="204" text-anchor="middle" font-size="10" font-weight="bold">10kΩ</text>
+    <text x="152" y="180" text-anchor="middle" class="comp-label">Rs</text>
+    <line x1="175" y1="200" x2="220" y2="200" stroke="#0f172a" stroke-width="2" />
+    <circle cx="220" cy="200" r="4" fill="#2563eb" />
+    <text x="220" y="185" text-anchor="middle" class="node-txt">ui</text>
+
+    <!-- 输入耦合电容 C1 = 10uF -->
+    <line x1="220" y1="200" x2="260" y2="200" stroke="#0f172a" stroke-width="2" />
+    <!-- 电容符号极性 -->
+    <line x1="260" y1="188" x2="260" y2="212" stroke="#0f172a" stroke-width="2.5" />
+    <line x1="266" y1="188" x2="266" y2="212" stroke="#0f172a" stroke-width="2.5" />
+    <text x="254" y="184" font-size="11" fill="#dc2626">+</text>
+    <text x="263" y="175" text-anchor="middle" class="comp-label">C1</text>
+    <text x="263" y="228" text-anchor="middle" class="val-label">10μF</text>
+    <line x1="266" y1="200" x2="340" y2="200" stroke="#0f172a" stroke-width="2" />
+
+    <!-- 2. 基极偏置回路：固定电阻 Rb' (50~200k) + 可调电位器 Rp (1~2M) -->
+    <!-- 垂直回路从 Ec 经过 Rb' 和 Rp 到基极 -->
+    <line x1="340" y1="40" x2="340" y2="80" stroke="#0f172a" stroke-width="2" />
+    <rect x="330" y="80" width="20" height="40" fill="#f1f5f9" stroke="#0f172a" stroke-width="2" />
+    <text x="360" y="98" class="comp-label">Rb'</text>
+    <text x="360" y="112" class="val-label">50~200k</text>
+
+    <line x1="340" y1="120" x2="340" y2="135" stroke="#0f172a" stroke-width="2" />
+    <!-- 电位器 Rp -->
+    <rect x="330" y="135" width="20" height="40" fill="#fef3c7" stroke="#d97706" stroke-width="2" />
+    <!-- 调节箭头 -->
+    <path d="M 315 160 L 355 145 M 355 145 L 348 144 M 355 145 L 354 152" stroke="#d97706" stroke-width="1.8" />
+    <text x="360" y="152" class="comp-label" fill="#d97706">Rp</text>
+    <text x="360" y="166" class="val-label">1~2MΩ</text>
+
+    <line x1="340" y1="175" x2="340" y2="200" stroke="#0f172a" stroke-width="2" />
+    <circle cx="340" cy="200" r="4" fill="#0f172a" />
+    <text x="325" y="215" font-weight="bold" font-size="12" fill="#0f172a">B</text>
+
+    <!-- 3. 晶体管 3DG6 (NPN) -->
+    <circle cx="430" cy="200" r="32" fill="#f8fafc" stroke="#334155" stroke-width="2" />
+    <!-- 基极连线与基区板 -->
+    <line x1="340" y1="200" x2="415" y2="200" stroke="#0f172a" stroke-width="2" />
+    <line x1="415" y1="182" x2="415" y2="218" stroke="#0f172a" stroke-width="3" />
+    <!-- 集电极线 -->
+    <line x1="415" y1="190" x2="445" y2="175" stroke="#0f172a" stroke-width="2" />
+    <line x1="445" y1="175" x2="445" y2="140" stroke="#0f172a" stroke-width="2" />
+    <text x="455" y="165" font-weight="bold" font-size="12" fill="#0f172a">C</text>
+    <!-- 发射极线与箭头 (NPN 向外) -->
+    <line x1="415" y1="210" x2="445" y2="225" stroke="#0f172a" stroke-width="2" />
+    <polygon points="440,227 447,226 443,219" fill="#0f172a" />
+    <line x1="445" y1="225" x2="445" y2="360" stroke="#0f172a" stroke-width="2" />
+    <text x="455" y="240" font-weight="bold" font-size="12" fill="#0f172a">E</text>
+
+    <text x="430" y="250" text-anchor="middle" font-size="11" font-weight="bold" fill="#3b82f6">3DG6 (NPN)</text>
+    <text x="430" y="265" text-anchor="middle" font-size="10" fill="#64748b">β = 50~80</text>
+
+    <!-- 4. 集电极负载电阻 Rc = 3k -->
+    <line x1="445" y1="40" x2="445" y2="80" stroke="#0f172a" stroke-width="2" />
+    <rect x="435" y="80" width="20" height="40" fill="#f1f5f9" stroke="#0f172a" stroke-width="2" />
+    <text x="465" y="98" class="comp-label">Rc</text>
+    <text x="465" y="112" class="val-label">3kΩ</text>
+    <line x1="445" y1="120" x2="445" y2="140" stroke="#0f172a" stroke-width="2" />
+    <circle cx="445" cy="140" r="4" fill="#0f172a" />
+
+    <!-- 5. 输出耦合电容 C2 = 10uF -->
+    <line x1="445" y1="140" x2="520" y2="140" stroke="#0f172a" stroke-width="2" />
+    <line x1="520" y1="128" x2="520" y2="152" stroke="#0f172a" stroke-width="2.5" />
+    <line x1="526" y1="128" x2="526" y2="152" stroke="#0f172a" stroke-width="2.5" />
+    <text x="514" y="124" font-size="11" fill="#dc2626">+</text>
+    <text x="523" y="115" text-anchor="middle" class="comp-label">C2</text>
+    <text x="523" y="168" text-anchor="middle" class="val-label">10μF</text>
+    <line x1="526" y1="140" x2="600" y2="140" stroke="#0f172a" stroke-width="2" />
+    <circle cx="600" cy="140" r="4" fill="#0f172a" />
+
+    <!-- 6. 负载电阻 RL = 3k -->
+    <line x1="600" y1="140" x2="600" y2="210" stroke="#0f172a" stroke-width="2" />
+    <rect x="590" y="210" width="20" height="40" fill="#f1f5f9" stroke="#0f172a" stroke-width="2" />
+    <text x="620" y="228" class="comp-label">RL</text>
+    <text x="620" y="242" class="val-label">3kΩ</text>
+    <line x1="600" y1="250" x2="600" y2="360" stroke="#0f172a" stroke-width="2" />
+
+    <!-- 输出端口 uo -->
+    <line x1="600" y1="140" x2="680" y2="140" stroke="#0f172a" stroke-width="2" />
+    <circle cx="680" cy="140" r="5" fill="#2563eb" />
+    <text x="680" y="125" text-anchor="middle" class="node-txt">uo</text>
+    <line x1="600" y1="360" x2="680" y2="360" stroke="#0f172a" stroke-width="2" />
+    <circle cx="680" cy="360" r="5" fill="#2563eb" />
+
+    <!-- 测量引线箭头 -->
+    <path d="M 680 148 L 680 230 M 680 352 L 680 270" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="3,3" />
+    <circle cx="680" cy="250" r="16" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5" />
+    <text x="680" y="255" text-anchor="middle" font-size="12" font-weight="bold" fill="#2563eb">uo</text>
+
+    <!-- 右侧原理重点解说栏 -->
+    <g transform="translate(640, 20)">
+      <rect x="70" y="280" width="120" height="90" rx="6" fill="#f8fafc" stroke="#cbd5e1" />
+      <text x="80" y="302" font-size="11" font-weight="bold" fill="#0f172a">核心测试要点：</text>
+      <text x="80" y="322" font-size="10" fill="#475569">● 直流 Q 点：ui=0</text>
+      <text x="80" y="340" font-size="10" fill="#475569">● 调 Rp 使 UC=6~8V</text>
+      <text x="80" y="358" font-size="10" fill="#475569">● 交流放大：输入 1kHz</text>
+    </g>
+  </g>
+
+  <!-- 底部关键原理提要 -->
+  <rect x="60" y="515" width="840" height="50" rx="8" fill="#eff6ff" stroke="#bfdbfe" />
+  <text x="80" y="535" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1e40af">💡 调 Q 点物理链条：</text>
+  <text x="80" y="552" font-family="sans-serif" font-size="11" fill="#1d4ed8">
+    Rp 调大 ➔ 基极回路电阻 RB 变大 ➔ IB 变小 ➔ IC = β·IB 变小 ➔ 管压降 UCE = Ec - IC·Rc 升高（靠近电源 Ec，易产生截止失真）；反之 Rp 调小易产生饱和失真。
+  </text>
+</svg>
